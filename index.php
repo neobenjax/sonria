@@ -10,61 +10,63 @@ if (isset( $_GET['r'])){
 	$retro=$_GET['r'];
 }
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
-{
-  if (PHP_VERSION < 6) {
-    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
-  }
+	function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
+	{
+	  if (PHP_VERSION < 6) {
+	    $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
+	  }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+	  //$theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($conn_sonria, $theValue) : '';
 
-  switch ($theType) {
-    case "text":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
-    case "long":
-    case "int":
-      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
-      break;
-    case "double":
-      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
-      break;
-    case "date":
-      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;
-    case "defined":
-      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
-      break;
-  }
-  return $theValue;
-}
+
+	  switch ($theType) {
+	    case "text":
+	      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+	      break;
+	    case "long":
+	    case "int":
+	      $theValue = ($theValue != "") ? intval($theValue) : "NULL";
+	      break;
+	    case "double":
+	      $theValue = ($theValue != "") ? doubleval($theValue) : "NULL";
+	      break;
+	    case "date":
+	      $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
+	      break;
+	    case "defined":
+	      $theValue = ($theValue != "") ? $theDefinedValue : $theNotDefinedValue;
+	      break;
+	  }
+	  return $theValue;
+	}
 }
 if ($sec=="novedades"){
 $colname_novedades = "-1";
 if (isset($_GET['id'])) {
   $colname_novedades = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_novedades = sprintf("SELECT * FROM novedades WHERE novedades_id = %s ORDER BY novedades_id DESC", GetSQLValueString($colname_novedades, "int"));
-$novedades = mysql_query($query_novedades, $conn_sonria) or die(mysql_error());
-$row_novedades = mysql_fetch_assoc($novedades);
-$totalRows_novedades = mysql_num_rows($novedades);
+$novedades = mysqli_query($conn_sonria, $query_novedades) or die(mysql_error());
+$row_novedades = mysqli_fetch_array($novedades);
+$totalRows_novedades = mysqli_num_rows($novedades);
 }
 
 if ($sec=="home"){
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_promociones = "SELECT * FROM promociones ORDER BY promocion_id DESC";
-$promociones = mysql_query($query_promociones, $conn_sonria) or die(mysql_error());
-$row_promociones = mysql_fetch_assoc($promociones);
-$totalRows_promociones = mysql_num_rows($promociones);
+$promociones = mysqli_query($conn_sonria, $query_promociones) or die(mysql_error());
+$row_promociones = mysqli_fetch_array($promociones);
+$totalRows_promociones = mysqli_num_rows($promociones);
 }
 
 if ($sec=="sucursales"){
-	mysql_select_db($database_conn_sonria, $conn_sonria);
-$query_sucrusales_seccion = "SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
-$sucrusales_seccion = mysql_query($query_sucrusales_seccion, $conn_sonria) or die(mysql_error());
-$row_sucrusales_seccion = mysql_fetch_assoc($sucrusales_seccion);
-$totalRows_sucrusales_seccion = mysql_num_rows($sucrusales_seccion);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
+//SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id
+$query_sucrusales_seccion = "SELECT suc.sucursal_id, suc.sucursal, imgsuc.img FROM sucursales suc, img_sucursales imgsuc WHERE suc.sucursal_id=imgsuc.img_sucursal";
+$sucrusales_seccion = mysqli_query($conn_sonria, $query_sucrusales_seccion) or die(mysql_error());
+$row_sucrusales_seccion = mysqli_fetch_array($sucrusales_seccion);
+$totalRows_sucrusales_seccion = mysqli_num_rows($sucrusales_seccion);
 }
 
 if ($sec=="sucursal"){
@@ -72,34 +74,34 @@ if ($sec=="sucursal"){
 	if (isset($_GET['id'])) {
 	  $colname_sucursales = $_GET['id'];
 	}
-	mysql_select_db($database_conn_sonria, $conn_sonria);
+	mysqli_select_db($conn_sonria, $database_conn_sonria);
 	$query_sucursales = sprintf("SELECT * FROM sucursales WHERE sucursal_id = %s", GetSQLValueString($colname_sucursales, "int"));
-	$sucursales = mysql_query($query_sucursales, $conn_sonria) or die(mysql_error());
-	$row_sucursales = mysql_fetch_assoc($sucursales);
-	$totalRows_sucursales = mysql_num_rows($sucursales);
-	
+	$sucursales = mysqli_query($conn_sonria, $query_sucursales) or die(mysql_error());
+	$row_sucursales = mysqli_fetch_array($sucursales);
+	$totalRows_sucursales = mysqli_num_rows($sucursales);
+
 	$colname_img_sucursales = "-1";
 	if (isset($_GET['id'])) {
 	  $colname_img_sucursales = $_GET['id'];
 	}
-	mysql_select_db($database_conn_sonria, $conn_sonria);
+	mysqli_select_db($conn_sonria, $database_conn_sonria);
 	$query_img_sucursales = sprintf("SELECT * FROM img_sucursales WHERE img_sucursal = %s", GetSQLValueString($colname_img_sucursales, "int"));
-	$img_sucursales = mysql_query($query_img_sucursales, $conn_sonria) or die(mysql_error());
-	$row_img_sucursales = mysql_fetch_assoc($img_sucursales);
-	$totalRows_img_sucursales = mysql_num_rows($img_sucursales);
+	$img_sucursales = mysqli_query($conn_sonria, $query_img_sucursales) or die(mysql_error());
+	$row_img_sucursales = mysqli_fetch_array($img_sucursales);
+	$totalRows_img_sucursales = mysqli_num_rows($img_sucursales);
 }
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_sucrusales_menu = "SELECT sucursal_id, sucursal FROM sucursales ORDER BY sucursal ASC";
-$sucrusales_menu = mysql_query($query_sucrusales_menu, $conn_sonria) or die(mysql_error());
-$row_sucrusales_menu = mysql_fetch_assoc($sucrusales_menu);
-$totalRows_sucrusales_menu = mysql_num_rows($sucrusales_menu);
+$sucrusales_menu = mysqli_query($conn_sonria, $query_sucrusales_menu) or die(mysql_error());
+$row_sucrusales_menu = mysqli_fetch_array($sucrusales_menu);
+$totalRows_sucrusales_menu = mysqli_num_rows($sucrusales_menu);
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_tratamientos_menu = "SELECT tratamiento_id, tratamiento FROM tratamientos ORDER BY tratamiento_id ASC";
-$tratamientos_menu = mysql_query($query_tratamientos_menu, $conn_sonria) or die(mysql_error());
-$row_tratamientos_menu = mysql_fetch_assoc($tratamientos_menu);
-$totalRows_tratamientos_menu = mysql_num_rows($tratamientos_menu);
+$tratamientos_menu = mysqli_query($conn_sonria, $query_tratamientos_menu) or die(mysql_error());
+$row_tratamientos_menu = mysqli_fetch_array($tratamientos_menu);
+$totalRows_tratamientos_menu = mysqli_num_rows($tratamientos_menu);
 
 $maxRows_tratamientos_botones = 7;
 $pageNum_tratamientos_botones = 0;
@@ -108,17 +110,17 @@ if (isset($_GET['pageNum_tratamientos_botones'])) {
 }
 $startRow_tratamientos_botones = $pageNum_tratamientos_botones * $maxRows_tratamientos_botones;
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_tratamientos_botones = "SELECT tratamiento_id, tratamiento, tratamiento_subtitulo, tratamiento_menu FROM tratamientos ORDER BY tratamiento_menu DESC, tratamiento_id ASC";
 $query_limit_tratamientos_botones = sprintf("%s LIMIT %d, %d", $query_tratamientos_botones, $startRow_tratamientos_botones, $maxRows_tratamientos_botones);
-$tratamientos_botones = mysql_query($query_limit_tratamientos_botones, $conn_sonria) or die(mysql_error());
-$row_tratamientos_botones = mysql_fetch_assoc($tratamientos_botones);
+$tratamientos_botones = mysqli_query($conn_sonria, $query_limit_tratamientos_botones) or die(mysql_error());
+$row_tratamientos_botones = mysqli_fetch_array($tratamientos_botones);
 
 if (isset($_GET['totalRows_tratamientos_botones'])) {
   $totalRows_tratamientos_botones = $_GET['totalRows_tratamientos_botones'];
 } else {
-  $all_tratamientos_botones = mysql_query($query_tratamientos_botones);
-  $totalRows_tratamientos_botones = mysql_num_rows($all_tratamientos_botones);
+  $all_tratamientos_botones = mysqli_query($conn_sonria, $query_tratamientos_botones);
+  $totalRows_tratamientos_botones = mysqli_num_rows($all_tratamientos_botones);
 }
 $totalPages_tratamientos_botones = ceil($totalRows_tratamientos_botones/$maxRows_tratamientos_botones)-1;
 
@@ -127,33 +129,33 @@ if ($sec=="tratamiento"){
 	if (isset($_GET['id'])) {
 	  $colname_tratamientos = $_GET['id'];
 	}
-	mysql_select_db($database_conn_sonria, $conn_sonria);
+	mysqli_select_db($conn_sonria, $database_conn_sonria);
 	$query_tratamientos = sprintf("SELECT * FROM tratamientos WHERE tratamiento_id = %s", GetSQLValueString($colname_tratamientos, "int"));
-	$tratamientos = mysql_query($query_tratamientos, $conn_sonria) or die(mysql_error());
-	$row_tratamientos = mysql_fetch_assoc($tratamientos);
-	$totalRows_tratamientos = mysql_num_rows($tratamientos);
+	$tratamientos = mysqli_query($conn_sonria, $query_tratamientos) or die(mysql_error());
+	$row_tratamientos = mysqli_fetch_array($tratamientos);
+	$totalRows_tratamientos = mysqli_num_rows($tratamientos);
 }
 
 if ($sec=="tratamientos"){
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_tratamientos_slider = "SELECT tratamiento_id, tratamiento, tratamiento_banner FROM tratamientos ORDER BY tratamiento_id ASC";
-$tratamientos_slider = mysql_query($query_tratamientos_slider, $conn_sonria) or die(mysql_error());
-$row_tratamientos_slider = mysql_fetch_assoc($tratamientos_slider);
-$totalRows_tratamientos_slider = mysql_num_rows($tratamientos_slider);
+$tratamientos_slider = mysqli_query($conn_sonria, $query_tratamientos_slider) or die(mysql_error());
+$row_tratamientos_slider = mysqli_fetch_array($tratamientos_slider);
+$totalRows_tratamientos_slider = mysqli_num_rows($tratamientos_slider);
 
 }
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_sucursales_footer = "SELECT sucursal_id, sucursal FROM sucursales ORDER BY sucursal ASC";
-$sucursales_footer = mysql_query($query_sucursales_footer, $conn_sonria) or die(mysql_error());
-$row_sucursales_footer = mysql_fetch_assoc($sucursales_footer);
-$totalRows_sucursales_footer = mysql_num_rows($sucursales_footer);
+$sucursales_footer = mysqli_query($conn_sonria, $query_sucursales_footer) or die(mysql_error());
+$row_sucursales_footer = mysqli_fetch_array($sucursales_footer);
+$totalRows_sucursales_footer = mysqli_num_rows($sucursales_footer);
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_tratamientos_footer = "SELECT tratamiento_id, tratamiento FROM tratamientos ORDER BY tratamiento_id ASC";
-$tratamientos_footer = mysql_query($query_tratamientos_footer, $conn_sonria) or die(mysql_error());
-$row_tratamientos_footer = mysql_fetch_assoc($tratamientos_footer);
-$totalRows_tratamientos_footer = mysql_num_rows($tratamientos_footer);
+$tratamientos_footer = mysqli_query($conn_sonria, $query_tratamientos_footer) or die(mysql_error());
+$row_tratamientos_footer = mysqli_fetch_array($tratamientos_footer);
+$totalRows_tratamientos_footer = mysqli_num_rows($tratamientos_footer);
 ?>
 <?php
 require_once('calendar/classes/tc_calendar.php');
@@ -340,15 +342,15 @@ require_once('calendar/classes/tc_calendar.php');
   <link rel="stylesheet" type="text/css" href="js/slider/themes/carbono/jquery.slider.ie6.css" />
   <![endif]-->
 
-  
+
   <script type="text/javascript" src="js/slider/jquery.slider.min.js"></script>
 <?php }?>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
-	  
+
 <!--SLIDER-->
-	  
-<?php if ($sec=="home" || $sec=="acerca" || $sec=="tratamientos"){ ?>	  
+
+<?php if ($sec=="home" || $sec=="acerca" || $sec=="tratamientos"){ ?>
     $(".slider").slideshow({
       width      : 652,
       height     : 572,
@@ -376,29 +378,29 @@ require_once('calendar/classes/tc_calendar.php');
 <?php }?>
 
 <!--PLACEHOLDER-->
-	
-	    function placeholder(){  
-        $("input[type=text]").each(function(){  
-            var phvalue = $(this).attr("placeholder");  
-            $(this).val(phvalue);  
-        });  
+
+	    function placeholder(){
+        $("input[type=text]").each(function(){
+            var phvalue = $(this).attr("placeholder");
+            $(this).val(phvalue);
+        });
     }
-	
+
 <!--PLACE HOLDER PARA FORMA DE CONTACTO-->
-    placeholder();  
-    $("input[type=text]").focusin(function(){  
-        var phvalue = $(this).attr("placeholder");  
-        if (phvalue == $(this).val()) {  
-        $(this).val("");  
-        }  
-    });  
-    $("input[type=text]").focusout(function(){  
-        var phvalue = $(this).attr("placeholder");  
-        if ($(this).val() == "") {  
-            $(this).val(phvalue);  
-        }  
-    }); 
-	
+    placeholder();
+    $("input[type=text]").focusin(function(){
+        var phvalue = $(this).attr("placeholder");
+        if (phvalue == $(this).val()) {
+        $(this).val("");
+        }
+    });
+    $("input[type=text]").focusout(function(){
+        var phvalue = $(this).attr("placeholder");
+        if ($(this).val() == "") {
+            $(this).val(phvalue);
+        }
+    });
+
 });
 </script>
 
@@ -411,7 +413,7 @@ require_once('calendar/classes/tc_calendar.php');
 
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    
+
 	ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
@@ -441,7 +443,7 @@ $(document).ready(function() {
 				'transitionIn'		: 'none',
 				'transitionOut'		: 'none'
 			});
-			
+
 			$("#various3").fancybox({
 				'width'				: 660,
 				'height'			: 500,
@@ -450,10 +452,10 @@ $(document).ready(function() {
 				'transitionOut'		: 'none',
 				'type'				: 'iframe'
 			});
-			
-			
+
+
 			$("a#example5").fancybox();
-			
+
 			$("a[rel=example_group]").fancybox({
 				'transitionIn'		: 'none',
 				'transitionOut'		: 'none',
@@ -470,10 +472,10 @@ $(document).ready(function() {
 <?php }?>
 function MM_validateForm() { //v4.0
   if (document.getElementById){
-	  
+
     var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
 	if ($('#Nombre').val()=="Nombre") errors += '- Ingrese su Nombre.\n';
-	
+
     for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=document.getElementById(args[i]);
       if (val) { nm=val.name; if ((val=val.value)!="") {
         if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
@@ -483,18 +485,18 @@ function MM_validateForm() { //v4.0
           if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
             min=test.substring(8,p); max=test.substring(p+1);
             if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } 
-	  
-	  
-	  } 
+      } }
+
+
+	  }
 	  else if (test.charAt(0) == 'R') errors += '- '+nm+' es un campo requerido.\n';
-	  
+
 	  }
     }
-	
+
 	if ($('#Fecha').val()=="0000-00-00") errors += '- Seleccione un fecha para su cita.\n';
 	if ($('#Hora').val()=="Hora de Cita") errors += '- Seleccione un horario para su cita.\n';
-	
+
 	if (errors) alert(errors);
     document.MM_returnValue = (errors == '');
 } }
@@ -502,7 +504,7 @@ function MM_validateForm() { //v4.0
 <?php if ($sec=="contacto"){ ?>
 function MM_validateContacto() { //v4.0
   if (document.getElementById){
-	  
+
     var i,p,q,nm,test,num,min,max,errors='',args=MM_validateContacto.arguments;
 	if ($('#Nombre_contacto').val()=="Nombre") errors += '- Ingrese su Nombre.\n';
     for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=document.getElementById(args[i]);
@@ -514,23 +516,23 @@ function MM_validateContacto() { //v4.0
           if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
             min=test.substring(8,p); max=test.substring(p+1);
             if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
-      } } 
-	  
-	  
-	  } 
+      } }
+
+
+	  }
 	  else if (test.charAt(0) == 'R') errors += '- '+nm+' es un campo requerido.\n';
-	  
+
 	  }
     }
-	
-	
+
+
 	if (errors) alert(errors);
     document.MM_returnValue = (errors == '');
 } }
 <?php }?>
 
     </script>
-    
+
 <!--CALENDARIO-->
 <link href="calendar/calendar.css" rel="stylesheet" type="text/css" />
 <script language="javascript" src="calendar/calendar.js"></script>
@@ -575,43 +577,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <div class="back">
 <div class="container">
-  <div class="header"><a class="logo" href="?"><img src="img/logo.png" /></a> 
-  
+  <div class="header"><a class="logo" href="?"><img src="img/logo.png" /></a>
+
   <ul class="menu">
-  
+
   <li><div class="division" style="background:none;"></div><a <?php if ($sec=="contacto"){; ?> class="activo"<?php }?> href="?s=contacto"><span>CONTACTO</span><br />Ll&aacute;manos!</a></li>
-  
-<!--  <li><div class="division"></div><a <?php if ($sec=="tratamientos"){; ?> class="activo"<?php }?> href="?s=tratamientos"><span>NUESTROS TRATAMIENTOS</span><br />La mejor inversi&oacute;n es la prevenci&oacute;n</a>  --> 
-  
+
+<!--  <li><div class="division"></div><a <?php if ($sec=="tratamientos"){; ?> class="activo"<?php }?> href="?s=tratamientos"><span>NUESTROS TRATAMIENTOS</span><br />La mejor inversi&oacute;n es la prevenci&oacute;n</a>  -->
+
     <ul>
-        
+
           <?php do { ?>
             <li> <a href="?s=tratamiento&id=<?php echo $row_tratamientos_menu['tratamiento_id']; ?>" title="<?php echo $row_tratamientos_menu['tratamiento']; ?>"><?php echo $row_tratamientos_menu['tratamiento']; ?></a></li>
-            <?php } while ($row_tratamientos_menu = mysql_fetch_assoc($tratamientos_menu)); ?>
-         
+            <?php } while ($row_tratamientos_menu = mysqli_fetch_array($tratamientos_menu)); ?>
+
       </ul>
-  
+
   </li>
-  
+
   <li><div class="division"></div><a <?php if ($sec=="sucursales"){; ?> class="activo"<?php }?> href="?s=sucursales"><span>NUESTRAS SUCURSALES</span><br />Sucursales cerca de ti</a>
   <ul>
-        
-        
+
+
         <?php do { ?>
           <li> <a href="?s=sucursal&id=<?php echo $row_sucrusales_menu['sucursal_id']; ?>" title="Cl&iacute;nica <?php echo $row_sucrusales_menu['sucursal']; ?>">Cl&iacute;nica <?php echo $row_sucrusales_menu['sucursal']; ?></a></li>
-          <?php } while ($row_sucrusales_menu = mysql_fetch_assoc($sucrusales_menu)); ?>
+          <?php } while ($row_sucrusales_menu = mysqli_fetch_array($sucrusales_menu)); ?>
 <!--<li> <a href="?s=sucursal_coapa" title="Cl&iacute;nica Coapa">Cl&iacute;nica Coapa</a></li>
         <li> <a href="?s=sucursal_valle" title="Cl&iacute;nica Del Valle">Cl&iacute;nica Del Valle</a></li>
         <li> <a href="?s=sucursal_lindavista" title="Cl&iacute;nica Lindavista">Cl&iacute;nica Lindavista</a></li>
         <li> <a href="?s=sucursal_neza" title="Cl&iacute;nica Neza">Cl&iacute;nica Neza</a></li>
         <li> <a href="?s=sucursal_roma" title="Cl&iacute;nica Roma">Cl&iacute;nica Roma</a></li>
         <li> <a href="?s=sucursal_tasquena" title="Cl&iacute;nica Taxque&ntilde;a">Cl&iacute;nica Taxque&ntilde;a</a></li>-->
-        
-        
+
+
       </ul>
-  
+
   </li>
-   
+
   <li><div class="division"></div><a <?php if ($sec=="acerca"){; ?> class="activo"<?php }?> href="?s=acerca" ><span>ACERCA DE SONR&Iacute;A</span><br />Soluci&oacute;n a tus necesidades de salud<br />oral con los mejores especialistas</a>
     <ul style="width:auto;">
         <li> <a href="?s=mision" title="Misi&oacute;n Visi&oacute;n Compromiso">Misi&oacute;n Visi&oacute;n Compromiso</a></li>
@@ -619,27 +621,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- COFEPRIS
 
         <li> <a href="?s=diferentes" title="Cl&iacute;nica Coapa">Qu&eacute; nos hace diferentes?</a></li>
-COFEPRIS -->      
+COFEPRIS -->
       </ul>
-  
+
   </li>
-  
-  
-  
-  
+
+
+
+
   </ul>
-    
+
   <!-- end .header --></div>
   <div style="clear:both"></div>
   <div class="sidebarLeft">
-  
+
   <?php if (isset($_GET["s"])&& $_GET["s"]=="unete"){ ?>
 <p style="margin-top:200px;"><strong>Quieres formar parte del<br />
       <span style="font-size:20px;">GRAN PROYECTO SONR&Iacute;A?</span>
     </strong></p>
     <h1 class="titulos" style="border-radius:5px; margin-top:0; margin-left:60px;"><a style="font-size:17px; color:#FFF; text-decoration:none; text-shadow:none; text-transform:capitalize;" href="mailto:rhumanos@sonria.com.mx">Env&iacute;anos tu curriculum</a></h1>
     <?php }else{  ?>
-      
+
     <h1><img src="img/agenda.png" title="Agenda tu Cita" width="190" height="40" /></h1>
     <div class="agenda">
     <?php if (isset($_GET["r"])){ ?>
@@ -649,8 +651,8 @@ COFEPRIS -->
     	<p>Adquiera nuestra <strong>  <a style="font-size:18px; color:#FFF" href="?s=membresia">membres&iacute;a</a></strong> con una promoci&oacute;n especial para usted. </p>
     </div>
     <?php }else{  ?>
-    
-    
+
+
       <form id="form1" name="form1" method="post" action="citas2.php">
         <label for="Nombre"></label>
         <input type="text" name="Nombre" id="Nombre" placeholder="Nombre"/>
@@ -659,7 +661,7 @@ COFEPRIS -->
         <label for="url"></label>
         <input type="text" name="Telefono" id="Telefono" placeholder="Telefono"/>
         <div class="oc"><input name="url" type="text" id="url" /></div>
-        
+
 <?php
 					  $myCalendar = new tc_calendar("Fecha", true, false);
 					  //$myCalendar->setIcon("calendar/images/iconCalendar.gif");
@@ -678,11 +680,11 @@ COFEPRIS -->
 					  $myCalendar->writeScript();
 ?>
 
-      
+
         <select name="Hora" id="Hora">
           <option>Hora de Cita</option>
 	  <option>09:00 - 10:00</option>
-	  <option>10:00 - 11:00</option>          
+	  <option>10:00 - 11:00</option>
 	  <option>11:00 - 12:00</option>
           <option>12:00 - 13:00</option>
           <option>13:00 - 14:00</option>
@@ -695,7 +697,7 @@ COFEPRIS -->
         </select>
 <label for="Comentario"></label>
         <textarea name="Comentario" id="Comentario" cols="45" rows="3"  placeholder="Alg&uacute;n comenario?"></textarea>
-        
+
         <input name="s" type="hidden" value="<?php echo $sec?>" />
 <!--<input name="button" type="submit" id="button" onclick="MM_validateForm('Nombre','','R','Email','','RisEmail','Telefono','','R','Fecha','','R','Hora','','R');return document.MM_returnValue" value="Hacer Cita" />-->
 
@@ -703,65 +705,65 @@ COFEPRIS -->
 
 <input name="sec" type="hidden" value="<?php echo $sec; ?>" />
       </form>
-    
-    
-    
-    
-    
+
+
+
+
+
     <?php }?>
-    
-    
+
+
     </div>
-    
+
     <?php }?>
   </div>
-    
+
     <?php if ($sec=="home"){ ?>
   <div class="sidebarRight" style="width:616px; height:572px;">
 
 
 <div class="slider_promociones">
 
-  
+
   <?php do { ?>
     <div>
       <div style="background: url(img/<?php echo $row_promociones['promocion_img']; ?>) no-repeat right top; height:572px;">
         <?php if ($row_promociones['promocion_titulo']==!NULL) { ?>
   <h1 class="titulos"><?php echo $row_promociones['promocion_titulo']; ?></h1>
   <?php } ?>
-  
+
   <?php if ($row_promociones['promocion_desc']==!NULL) { ?>
           <h2 class="titulos"> <?php echo $row_promociones['promocion_desc']; ?></h2>
           <?php } ?>
-          
+
       </div>
     </div>
-    <?php } while ($row_promociones = mysql_fetch_assoc($promociones)); ?>
-  
-  
-  
- 
-</div>  
+    <?php } while ($row_promociones = mysqli_fetch_array($promociones)); ?>
+
+
+
+
+</div>
 </div>
 
 
 
-  <?php include("pie_home.php"); ?> 
+  <?php include("pie_home.php"); ?>
 
 
 
     <?php } ?>
-    
 
 
-   
+
+
  <?php if ($sec=="acerca"){ ?>
   <div class="sidebarRight" >
-  
+
   	<h1 class="titulos">ACERCA DE SONR&Iacute;A</h1>
   	<h2 class="titulos">Somos tu mejor opci&oacute;n!</h2>
 	<div class="slider">
-	
+
   	<div>
     		<div style="background: url(img/banner_acerca3.jpg) no-repeat left top; width:652px; height:572px;">
       			<div style="padding:112px 0 30px 0; text-align:center;">
@@ -779,7 +781,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
- 
+
   <div>
     <div style="background: url(img/banner_acerca3.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -788,7 +790,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
   <div>
     <div style="background: url(img/banner_acerca6.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -797,7 +799,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
   <div>
     <div style="background: url(img/banner_acerca6.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -806,7 +808,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
   <div>
     <div style="background: url(img/banner_acerca6.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -815,7 +817,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
   <div>
     <div style="background: url(img/banner_acerca7A.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -824,7 +826,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
   <div>
     <div style="background: url(img/banner_acerca8A.jpg) no-repeat left top; width:652px; height:572px;">
       <div style="padding:112px 0 30px 0; text-align:center;">
@@ -833,7 +835,7 @@ COFEPRIS -->
       </div>
     </div>
   </div>
-  
+
 
 </div>
 
@@ -844,10 +846,10 @@ COFEPRIS -->
 
 
     <?php } ?>
-    
+
      <?php if ($sec=="tratamientos"){ ?>
   <div class="sidebarRight" >
-  
+
 
 <div class="slider">
 
@@ -862,47 +864,47 @@ COFEPRIS -->
           </div>
         </a>
     </div>
-    <?php } while ($row_tratamientos_slider = mysql_fetch_assoc($tratamientos_slider)); ?>
+    <?php } while ($row_tratamientos_slider = mysqli_fetch_array($tratamientos_slider)); ?>
 
 </div>
   </div>
     <?php } ?>
-    
+
     <?php if ($sec=="tratamiento"){ ?>
   <div class="sidebarRight" >
   <div class="header_img"> <img src="img/<?php echo $row_tratamientos['tratamiento_header']; ?>" />
   </div>
   <h1><?php echo $row_tratamientos['tratamiento']; ?></h1>
   <h2><?php echo $row_tratamientos['tratamiento_subtitulo']; ?></h2>
-  
+
   <div class="sidebar_info">
-    
+
       <?php echo $row_tratamientos['tratamiento_contenido']; ?>
 
-    
 
 
-	
-      
+
+
+
     </div>
-  
+
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTESs</h4>
       <?php echo $row_tratamientos['tratamiento_faqs']; ?>
       </p>
       <h4><a id="various1" href="#inline1" onclick="aparece()">Ver video</a></h4>
-      
+
     <div style="display: none;">
 		<div id="inline1" style="padding:3px; overflow:auto; ">
 			<?php echo $row_tratamientos['tratamiento_video']; ?>
 	  </div>
   </div>
     </div>
-  
+
   </div>
     <?php } ?>
-    
+
 
 <?php if ($sec=="ortodoncia"){ ?>
   <div class="sidebarRight" >
@@ -913,12 +915,12 @@ COFEPRIS -->
   <h1>ORTODONCIA</h1>
   <h2>Devolvemos la funci&oacute;n y est&eacute;tica a tus dientes</h2>
 
-  
+
   <div class="sidebar_info">
-    
+
       <p><strong>¿Que es la Ortodoncia?     </strong><br />
         Es la especialidad que se encarga de colocar los dientes en posiciones ideales para buscar funcionalidad y est&eacute;tica.</p>
-      <p><strong>¿Por que es importante?</strong><br /> 
+      <p><strong>¿Por que es importante?</strong><br />
         Es la forma de ubicar los dientes para buscar armon&iacute;a, sin necesidad de hacer procedimientos invasivos (desgaste del tejido dental).</p>
       <p> Al tener una adecuada mordida los dientes no se desgastan ni hacen fuerzas inadecuadas que los debiliten. Adem&aacute;s permite tener una buena funci&oacute;n masticatoria ayudando a tu digesti&oacute;n.      </p>
       <h4>TIPS!</h4>
@@ -928,11 +930,11 @@ COFEPRIS -->
         <li> Evita el consumo de alimentos duros, chicles, morder 		directamente con los dientes, ya que puede ocasionar 		el desprendimiento de un bracket, retrasando el 			tiempo de tu tratamiento.</li>
         <li>De la asistencia a tus controles depende la sonrisa que 		quieres tener. </li>
       </ul>
-    
+
     </div>
-  
+
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Para que son los retenedores?</strong><br />
         Es la aparatolog&iacute;a fundamental para conservar tu tratamiento de ortodoncia, del uso de ellos depende que tus dientes no vuelvan a la posici&oacute;n original y se desalinie la mordida. Inicialmente debes usarlos d&iacute;a y noche y luego solamente en la noche de acuerdo a las instrucciones de tu especialista.</p>
@@ -941,7 +943,7 @@ COFEPRIS -->
       <p><strong>¿Cuanto tiempo dura una ortodoncia?</strong><br />
         Esta depender&aacute; de la cantidad de movimientos que se deban hacer en tu boca, puede variar desde 18 hasta 24 meses o m&aacute;s dependiendo cada caso en particular.<br />
       </p>
-	
+
      <!--VIDEO OFF
       <h4><a id="various1" href="#inline1">Ver video</a></h4>
 	<div style="display: none;">
@@ -955,10 +957,10 @@ COFEPRIS -->
        VIDEO OFF -->
 
     </div>
-  
+
   </div>
     <?php } ?>
-    
+
 
 <?php if ($sec=="implantes"){ ?>
   <div class="sidebarRight" >
@@ -967,9 +969,9 @@ COFEPRIS -->
   <h1>IMPLANTES Y PR&Oacute;TESIS</h1>
   <h2>Siempre es posible volver a sonreir</h2>
 
-  
+
   <div class="sidebar_info">
-    
+
       <p>La Rehabilitaci&oacute;n es la especialidad que reemplaza dientes perdidos o en muy mal estado, devolvi&eacute;ndote la funci&oacute;n y la est&eacute;tica.</p>
       <p><strong>¿Por que es importante?</strong><br />
         La Rehabilitaci&oacute;n oral es importante ya que nos da diferentes opciones de tratamiento para reemplazar uno, varios o todos los dientes perdidos, adapt&aacute;ndose a todos los presupuestos. Es una especialidad que nos devuelve la sonrisa.</p>
@@ -982,10 +984,10 @@ COFEPRIS -->
         </li>
         <li>Preg&uacute;ntale a tu odont&oacute;logo c&oacute;mo puedes limpiar tu 		pr&oacute;tesis removible. (No todas son hechas del mismo 		material).</li>
       </ul>
-    
+
     </div>
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Que tipo de tratamiento existe para reemplazar uno o mas dientes?</strong><br />
         Depende del n&uacute;mero de dientes y de su posici&oacute;n. Se pueden realizar pr&oacute;tesis fijas, removibles (quitar y poner), o implantes. Este &uacute;ltimo consiste en colocar un tornillo en el lugar que ocupa la ra&iacute;z del diente y posteriormente realizar  una corona sobre &eacute;ste.</p>
@@ -999,7 +1001,7 @@ COFEPRIS -->
       </ul>
       <h4 style="font-size:19px; text-align:left;">&nbsp;
     </h4>
-      
+
       <!--VIDEO OFF
       <h4><a id="various1" href="#inline1">Ver video</a></h4>
 
@@ -1010,12 +1012,12 @@ COFEPRIS -->
 	        </div>
       </div>
        VIDEO OFF -->
-    
+
     </div>
-  
+
   </div>
     <?php } ?>
-    
+
 
 <?php if ($sec=="odontopediatria"){ ?>
   <div class="sidebarRight" >
@@ -1024,13 +1026,13 @@ COFEPRIS -->
   <h1>ODONTOPEDIATR&Iacute;A</h1>
   <h2>Porque tus hijos lo necesitan</h2>
 
-  
+
   <div class="sidebar_info">
-    
-      <p><strong>¿Que es Odontopediatria?</strong><br />      
+
+      <p><strong>¿Que es Odontopediatria?</strong><br />
         Es la especialidad que se encarga de la atenci&oacute;n de los ni&ntilde;os entre 1 y 12 a&ntilde;os.</p>
       <p>El Odontopediatra tiene la capacidad de manejar los problemas iniciales de crecimiento de maxilares con aparatos removibles.</p>
-      <p><strong>¿Por que es importante?</strong><br />      
+      <p><strong>¿Por que es importante?</strong><br />
         Es importante porque nos ayuda desde edades tempranas a generar experiencias agradables en los ni&ntilde;os para evitar que en un futuro las consultas odontol&oacute;gicas sean  traum&aacute;ticas.</p>
       <p>Contribuye a que tus hijos crezcan con dientes sanos y  los prepara para que desde su infancia conozcan la importancia de cuidar  su salud oral.</p>
     <h4><a id="various1" href="#inline1">Ver video</a></h4>
@@ -1041,10 +1043,10 @@ COFEPRIS -->
 			<iframe width="640" height="480" src="//www.youtube.com/embed/qnJsfs83Y9U?rel=0" frameborder="0" allowfullscreen></iframe>
 	  </div>
   </div>
-    
+
     </div>
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Desde que edad debo llevar a mis hijos al odontologo?</strong><br />
         Desde la aparici&oacute;n del primer diente para ense&ntilde;arles los h&aacute;bitos que garanticen su salud oral</p>
@@ -1055,12 +1057,12 @@ COFEPRIS -->
         Posteriormente y hasta los 12 a&ntilde;os pastas con sabores agradables para incentivar el h&aacute;bito de cepillado. </p>
       <p><strong>¿Que signos debo tener en cuenta para llevar a mi hijo al odontologo?</strong><br />
         No se debe esperar ning&uacute;n s&iacute;ntoma. Debes traerlo cada 6 meses para control con nuestros especialistas, ya que son ellos quienes pueden diagnosticar el estado de salud oral de tus hijos.</p>
-        
-       
+
+
   </div>
   </div>
     <?php } ?>
-    
+
 
 
 <?php if ($sec=="endodoncia"){ ?>
@@ -1070,13 +1072,13 @@ COFEPRIS -->
   <h1>ENDODONCIA</h1>
   <h2>Agotando todas las opciones para salvar tus dientes</h2>
 
-  
+
   <div class="sidebar_info">
-    
-      <p><strong>¿Que es la Endodoncia?</strong><br />      
+
+      <p><strong>¿Que es la Endodoncia?</strong><br />
         Es la especialidad que se encarga de retirar el nervio del diente cuando &eacute;ste ha sido afectado por una caries, por un golpe o simplemente por requerimiento de un procedimiento de rehabilitaci&oacute;n que est&eacute; causando sintomatolog&iacute;a.<br />
       </p>
-      <p><strong>¿Por que es importante?</strong><br />      
+      <p><strong>¿Por que es importante?</strong><br />
          La endodoncia es importante porque nos permite dar una mayor vida &uacute;til al diente en boca, a pesar de que su nervio haya sido extra&iacute;do.
       </p>
       <h4><a id="various1" href="#inline1">Ver video</a></h4>
@@ -1087,10 +1089,10 @@ COFEPRIS -->
 			<iframe width="640" height="480" src="//www.youtube.com/embed/4rSDx-c6cRA?rel=0" frameborder="0" allowfullscreen></iframe>
 	  </div>
   </div>
-    
+
     </div>
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Mi diente va a quedar igual?</strong><br />
         No, un diente tratado con endodoncia puede cambiar de color y la susceptibilidad a la fractura aumenta considerablemente. Con el tiempo podemos realizar una rehabilitaci&oacute;n poste y corona o en algunos casos extraer el diente.</p>
@@ -1098,11 +1100,11 @@ COFEPRIS -->
         Un diente tratado con endodoncia puede presentar infecciones posteriores que causen lesiones en las ra&iacute;ces de los dientes, para tratarlos se puede repetir la endodoncia o puede ser necesario una cirug&iacute;a. Estos tratamientos no siempre son exitosos.</p>
       <p><strong>¿Que ventajas tiene este tipo de tratamiento?</strong><br />
         La m&aacute;s importante es que vamos a conservar tu diente en boca. No tendr&aacute; la misma vitalidad, pero seguir&aacute; cumpliendo su funci&oacute;n masticatoria.</p>
-    
+
     </div>
   </div>
     <?php } ?>
-    
+
 
 <?php if ($sec=="periodoncia"){ ?>
   <div class="sidebarRight" >
@@ -1111,12 +1113,12 @@ COFEPRIS -->
   <h1>PERIODONCIA</h1>
   <h2>Porque sin un buen soporte Tus dientes se pueden perder</h2>
 
-  
+
   <div class="sidebar_info">
-    
+
       <p><strong>¿Que es la periodoncia?</strong><br />
         La periodoncia es la especialidad que se encarga de mantener sanos los tejidos de soporte del diente (hueso y enc&iacute;a), para evitar la p&eacute;rdida de los dientes.</p>
-      <p><strong>¿Por que es importante?</strong><br />      
+      <p><strong>¿Por que es importante?</strong><br />
         Porque si no se cuida el hueso y la enc&iacute;a, que son los que mantienen los dientes en su lugar, estos empezar&aacute;n a moverse hasta llegar a caerse.<br />
       </p>
       <h4><a id="various1" href="#inline1">Ver video</a></h4>
@@ -1127,10 +1129,10 @@ COFEPRIS -->
 1			<iframe width="640" height="480" src="//www.youtube.com/embed/g76rFnnTa7M?rel=0" frameborder="0" allowfullscreen></iframe>
 	  </div>
   </div>
-    
+
     </div>
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Por que me sangran las encias?</strong><br />
         Las enc&iacute;as sangran porque se inflaman como consecuencia del ac&uacute;mulo de placa bacteriana en tus dientes.</p>
@@ -1139,13 +1141,13 @@ COFEPRIS -->
         <br />
         <strong>¿Que son esas manchas oscuras que no puedo remover con el cepillo?</strong><br />
         Son C&aacute;lculos o restos de alimentos que no se retiran con el cepillo y se van calcificando (endureciendo). Por eso es importante realizarse una limpieza profesional cada 6 meses o seg&uacute;n indicaci&oacute;n del especialista. El soporte de tus dientes es el hueso. Debemos cuidarlo para garantizar una buena salud oral. </p>
-    
+
     </div>
   </div>
     <?php } ?>
 
 
-    
+
 <?php if ($sec=="cirugia"){ ?>
   <div class="sidebarRight" >
   <div class="header_img"> <img src="img/header_tratamientos_cirugia.jpg" />
@@ -1153,9 +1155,9 @@ COFEPRIS -->
   <h1>CIRUG&Iacute;A</h1>
   <h2>Dientes destruidos en tu boca, JAM&Aacute;S!</h2>
 
-  
+
   <div class="sidebar_info">
-    
+
       <p>Cirug&iacute;a es la especialidad que se encarga de extraer dientes que no se pueden salvar o dientes que por requerimiento de otra especialidad como la ortodoncia se deben extraer para lograr una mejor funci&oacute;n. Adem&aacute;s de diagnosticar y tratar lesiones en tejidos blandos de la cavidad oral. <br />
       </p>
       <p><strong>¿Por que es importante?</strong><br />
@@ -1173,10 +1175,10 @@ COFEPRIS -->
       </p>
       <p><br />
       </p>
-    
+
     </div>
   <div class="sidebar_info" style="margin-left:30px;">
-    
+
       <h4>PREGUNTAS FRECUENTES</h4>
       <p><strong>¿Puedo someterme a este tipo de procedimientos?</strong><br />
         S&iacute;, siempre y cuando est&eacute;s controlado y seamos autorizados por tu m&eacute;dico tratante.</p>
@@ -1186,7 +1188,7 @@ COFEPRIS -->
         No siempre. A veces puede quedar la ra&iacute;z en tu boca, lo que genera infecciones que llegan a debilitar el hueso.<br />
         Se recomienda la toma de una radiograf&iacute;a, para asegurarnos que no queden restos de diente.</p>
     <h4><a id="various1" href="#inline1">Ver video</a></h4>
-    
+
 
 
 	<div style="display: none;">
@@ -1232,7 +1234,7 @@ COFEPRIS -->
 			<p>  <font color="white"> . </font></p>
 			<p>Solo haz clic en  PAGO EN L&Iacute;NEA y disfruta de este beneficio con total seguridad:</p>
 			<p></p>
-			<p><p><a href="?s=membresiapaypal"><img src="img/azulpeque.png" /></a> </p></p> 			
+			<p><p><a href="?s=membresiapaypal"><img src="img/azulpeque.png" /></a> </p></p>
 				<!--COMENTARIO /* <p><p><a href="https://www.pagofacil.net/tpv/clinicasdentalessonria"><img src="img/azulpeque.png" /></a> </p></p> */ -->
 			<p> </p>
 			<p> </p>
@@ -1254,13 +1256,13 @@ COFEPRIS -->
 <?php } ?>
 <?php if ($sec=="membresiapaypal"){ ?>
 	 <div class="sidebarRight" >
-		<div class="header_img">  
+		<div class="header_img">
 			<h1></h1>
 		</div>
 		<a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal"></a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
 		<p>  <font color="white"> . </p>
-		<p> </font>  </p>  
-		<p> <font size=2 >Por favor selecciona la membres&iacute;a que deseas adquirir y empieza a disfrutar de sus beneficios: </font></p>		
+		<p> </font>  </p>
+		<p> <font size=2 >Por favor selecciona la membres&iacute;a que deseas adquirir y empieza a disfrutar de sus beneficios: </font></p>
 			<!--COMENTARIO /* <p> <font size=2 >Si tienes una cuenta PayPal, puedes realizar tu abono aqui: </font></p> */ -->
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 			<input type="hidden" name="cmd" value="_s-xclick">
@@ -1276,8 +1278,8 @@ COFEPRIS -->
 			<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 		</form>
 		<p>  <font color="white"> . </p>
-		<p> </font>  </p> 
-		<table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="https://www.paypal.com/es_XC/Marketing/i/banner/securepayment_by_pp_1line.png" border="0" alt="Aceptamos PayPal"></a></td></tr></table>	
+		<p> </font>  </p>
+		<table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="https://www.paypal.com/es_XC/Marketing/i/banner/securepayment_by_pp_1line.png" border="0" alt="Aceptamos PayPal"></a></td></tr></table>
 	</div>
 
 
@@ -1312,7 +1314,7 @@ COFEPRIS -->
 			<p>Porque pensamos en ti, ahora en Cl&iacute;nicas Dentales Sonr&iacute;a podras realizar abonos a tu tratamiento en l&iacute;nea.</p>
 			<p>Solo haz clic en  PAGO EN L&Iacute;NEA y disfruta de este beneficio con total seguridad:</p>
 			<p></p>
-			<p><p><a href="?s=pagosonlinepaypal"><img src="img/azulpeque.png" /></a> </p></p> 			
+			<p><p><a href="?s=pagosonlinepaypal"><img src="img/azulpeque.png" /></a> </p></p>
 				<!--COMENTARIO /* <p><p><a href="https://www.pagofacil.net/tpv/clinicasdentalessonria"><img src="img/azulpeque.png" /></a> </p></p> */ -->
 			<p> </p>
 			<p> </p>
@@ -1331,12 +1333,12 @@ COFEPRIS -->
 <?php } ?>
 <?php if ($sec=="pagosonlinepaypal"){ ?>
 	<div class="sidebarRight" >
-		<div class="header_img">  
+		<div class="header_img">
 			<h1></h1>
 		</div>
 		<a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal"></a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
 		<p>  <font color="white"> . </p>
-		<p> </font>  </p>  
+		<p> </font>  </p>
 		<p> <font size=2 >Por favor selecciona el bot&oacute;n Comprar Ahora para realizar tu abono con total seguridad: </font></p>
 			<!--COMENTARIO /*<p> <font size=2 >Si tienes una cuenta PayPal, puedes realizar tu abono aqui: </font></p> */ -->
 		<p>  <font color="white"> . </font></p>
@@ -1347,8 +1349,8 @@ COFEPRIS -->
 			<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 		</form>
 		<p>  <font color="white"> . </p>
-		<p> </font>  </p> 
-		<!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="https://www.paypal.com/es_XC/Marketing/i/banner/securepayment_by_pp_1line.png" border="0" alt="Aceptamos PayPal"></a></td></tr></table><!-- PayPal Logo -->	
+		<p> </font>  </p>
+		<!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="https://www.paypal.com/es_XC/Marketing/i/banner/securepayment_by_pp_1line.png" border="0" alt="Aceptamos PayPal"></a></td></tr></table><!-- PayPal Logo -->
 
 
   </div>
@@ -1362,7 +1364,7 @@ COFEPRIS -->
 		<h1>DOLOR DE MUELA</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es el dolor de muela?     </strong><br /></p>
-			<p>Es uno de los dolores m&aacute;s comunes, intensos e incontrolables. Es de tipo irradiado ya que las terminaciones nerviosas son compartidas por las ra&iacute;ces de los dientes adyacentes y cada una de sus enervaciones.</p> 
+			<p>Es uno de los dolores m&aacute;s comunes, intensos e incontrolables. Es de tipo irradiado ya que las terminaciones nerviosas son compartidas por las ra&iacute;ces de los dientes adyacentes y cada una de sus enervaciones.</p>
 			<p><strong>¿Qu&eacute; lo causa?     </strong><br /></p>
 			<p>El dolor de muela se produce a causa de una estimulaci&oacute;n por agentes t&eacute;rmicos, mec&aacute;nicos o qu&iacute;micos, que afectan directamente al nervio. El cerebro percibe esto como un est&iacute;mulo doloroso, intenso y que aumenta. En general a este padecimiento se le conoce como una pulpitis, ya que es una inflamaci&oacute;n del tejido pulpar o nervioso que se encuentra en los dientes. Algunas de las causas m&aacute;s comunes por las que se puede presentar un dolor dental son:</p>
 			<ul>
@@ -1382,7 +1384,7 @@ COFEPRIS -->
 				<li>Infecciones recurrentes en o&iacute;do.</li>
 				<li>Sinusitis.</li>
 			</ul>
-			<p></p>			
+			<p></p>
 			<p><strong>¿C&oacute;mo solucionar el dolor dental?     </strong><br /></p>
 			<p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas indicados para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa del dolor  y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
 			<p></p>
@@ -1402,9 +1404,9 @@ COFEPRIS -->
 				<li><a href="?s=periodontitis">Periodontitis</a></li>
 			</ul>
 
-		</div>	
+		</div>
 
-	</div>    
+	</div>
 
 
 <?php } ?>
@@ -1415,7 +1417,7 @@ COFEPRIS -->
 		<h1>GINGIVITIS</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es la Gingivitis?     </strong><br /></p>
-			<p>Es una de las afectaciones bucales m&aacute;s frecuentes, que se caracteriza por la inflamaci&oacute;n y sangrado de las enc&iacute;as.</p> 
+			<p>Es una de las afectaciones bucales m&aacute;s frecuentes, que se caracteriza por la inflamaci&oacute;n y sangrado de las enc&iacute;as.</p>
 			<p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
 			<p>Esta enfermedad es producida generalmente por la acumulaci&oacute;n de placa bacteriana, formada principalmente por restos de alimentos que se van acumulando entre los dientes, lo que resulta en una agresi&oacute;n directa a la enc&iacute;a. Si la placa bacteriana no se retira con una buena higiene oral, se llega a calcificar con minerales provenientes de la saliva, formando el sarro que se va acumulando y con el tiempo produce toxinas que irritan y deterioran el tejido de la enc&iacute;a.</p>
 			<p>Otros tipos menos comunes y que no son producidos por la acumulaci&oacute;n de placa bacteriana, se asocian con enfermedades cut&aacute;neas, alergias o infecciones virales.  Entre los casos m&aacute;s graves de esta enfermedad se encuentra la Gingivitis Ulceronecrotizante Aguda, que provoca tejidos necrosados, fuertes hemorragias espont&aacute;neas y aliento f&eacute;tido.</p>
@@ -1435,9 +1437,9 @@ COFEPRIS -->
 			<ul>
 				<li><a href="?s=dolor_de_muela">Dolor de muela</a> , <a href="?s=terceros_molares_muela_del_juicio">Muelas del juicio</a>, <a href="?s=hipersensibilidad_sensibilidad_en_los_dientes">Hipersensibilidad en los dientes</a> , <a href="?s=halitosis_mal_aliento">Mal aliento</a> , <a href="?s=sangrado_de_encias">Sangrado de encias</a></li>
 			</ul>
-		</div>	
+		</div>
 
-	</div>    
+	</div>
 
 
 <?php } ?>
@@ -1449,7 +1451,7 @@ COFEPRIS -->
 		<h2>Mal Aliento</h2>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es la Halitosis?     </strong><br /></p>
-			<p>La halitosis, es definida como olor desagradable procedente del aliento de una persona. Es un problema social asociado frecuentemente a una mala higiene bucal o enfermedades de la cavidad oral.</p> 
+			<p>La halitosis, es definida como olor desagradable procedente del aliento de una persona. Es un problema social asociado frecuentemente a una mala higiene bucal o enfermedades de la cavidad oral.</p>
 			<p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
 			<p>El mal olor procedente de la cavidad oral se debe a la acci&oacute;n de bacterias localizadas principalmente en el dorso de la lengua y en el surco gingival. La gran extensi&oacute;n lingual y su estructura papilada hace que se retengan en ella gran cantidad de restos de comida y desechos, cuya descomposici&oacute;n por las bacterias origina el mal olor principalmente por la producci&oacute;n de compuestos de Sulfuro.</p>
 			<p>Otros factores que provocan Halitosis o mal aliento pueden ser:</p>
@@ -1463,7 +1465,7 @@ COFEPRIS -->
 		</div>
 		<div class="sidebar_info" style="margin-left:30px;">
 			<p><strong>¿C&oacute;mo solucionar el problema de Halitosis?     </strong><br /></p>
-			<p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas que identificar&aacute;n las fuentes que pueden ocasionar mal aliento, realizando el <a href="?s=consulta">diagn&oacute;stico</a> y proponiendo el <a href="?s=tratamientos">tratamiento</a> apropiado en los casos de origen bucal. Si nuestro odont&oacute;logo  determina que tienes la boca saludable y no hay muestras de mejor&iacute;a con la rutina de higiene oral, te remitir&aacute; con tu m&eacute;dico de cabecera o con un especialista para determinar otras causas posibles del mal aliento.</p>			
+			<p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas que identificar&aacute;n las fuentes que pueden ocasionar mal aliento, realizando el <a href="?s=consulta">diagn&oacute;stico</a> y proponiendo el <a href="?s=tratamientos">tratamiento</a> apropiado en los casos de origen bucal. Si nuestro odont&oacute;logo  determina que tienes la boca saludable y no hay muestras de mejor&iacute;a con la rutina de higiene oral, te remitir&aacute; con tu m&eacute;dico de cabecera o con un especialista para determinar otras causas posibles del mal aliento.</p>
 			<p></p>
 			<h4>Tips para prevenir el Mal Aliento!</h4>
 			<p></p>
@@ -1478,8 +1480,8 @@ COFEPRIS -->
 			<ul>
 				<li><a href="?s=dolor_de_muela">Dolor de muela</a> , <a href="?s=terceros_molares_muela_del_juicio">Muelas del juicio</a> , <a href="?s=hipersensibilidad_sensibilidad_en_los_dientes">Hipersensibilidad en los dientes</a> , <a href="?s=gingivitis_inflamacion_encias">Inflamaci&oacute;n de las encias</a> , <a href="?s=sangrado_de_encias">Sangrado de encias</a> , <a href="?s=periodontitis">Periodontitis</a> </li>
 			</ul>
-		</div>	
-	</div>    
+		</div>
+	</div>
 
 
 <?php } ?>
@@ -1490,7 +1492,7 @@ COFEPRIS -->
 		<h1>HIPERSENSIBILIDAD</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es la hipersensibilidad?     </strong><br /></p>
-			<p>La hipersensibilidad dental es la sensaci&oacute;n dolorosa que puede tenerse al ingerir alimentos, bebidas fr&iacute;as, bedidas calientes, o al aspirar aire fr&iacute;o. Se caracteriza por un dolor intenso de corta duraci&oacute;n y de manera espor&aacute;dica.</p> 
+			<p>La hipersensibilidad dental es la sensaci&oacute;n dolorosa que puede tenerse al ingerir alimentos, bebidas fr&iacute;as, bedidas calientes, o al aspirar aire fr&iacute;o. Se caracteriza por un dolor intenso de corta duraci&oacute;n y de manera espor&aacute;dica.</p>
 			<p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
 			<p>Existen diferentes motivos por los que se puede presentar una sensibilidad en los dientes sobre todo cuando las enc&iacute;as se retraen separ&aacute;ndose del &oacute;rgano dentario o cuando hay una p&eacute;rdida de enc&iacute;a que puede ser el  resultado de cepillar los dientes en&eacute;rgicamente.  Otro factor importante es el desgate que pueden tener los dientes si el paciente tiene h&aacute;bitos de rechinar los dientes durante la noche.</p>
 			<p><strong>¿C&oacute;mo solucionar el problema de Hipersensibilidad?     </strong><br /></p>
@@ -1509,9 +1511,9 @@ COFEPRIS -->
 			<ul>
 				<li><a href="?s=dolor_de_muela">Dolor de muela</a> , <a href="?s=terceros_molares_muela_del_juicio">Muelas del juicio</a> , <a href="?s=halitosis_mal_aliento">Mal aliento</a> , <a href="?s=gingivitis_inflamacion_encias">Inflamaci&oacute;n de las encias</a> , <a href="?s=sangrado_de_encias">Sangrado de encias</a> , <a href="?s=periodontitis">Periodontitis</a></li>
 			</ul>
-		</div>	
+		</div>
 
-	</div>  
+	</div>
 
 
 <?php } ?>
@@ -1522,7 +1524,7 @@ COFEPRIS -->
 		<h1>PERIODONTITIS</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es la Periodontitis?     </strong><br /></p>
-			<p>Es una enfermedad que afecta a las enc&iacute;as y a la estructura de soporte de los dientes. Las bacterias presente en la placa causa la enfermedad periodontal. Los s&iacute;ntomas de la enfermedad periodontal son similares a los de una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a>, ya que la inflamaci&oacute;n de las enc&iacute;as se presenta como etapa inicial de una periodontitis.</p> 
+			<p>Es una enfermedad que afecta a las enc&iacute;as y a la estructura de soporte de los dientes. Las bacterias presente en la placa causa la enfermedad periodontal. Los s&iacute;ntomas de la enfermedad periodontal son similares a los de una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a>, ya que la inflamaci&oacute;n de las enc&iacute;as se presenta como etapa inicial de una periodontitis.</p>
 			<p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
 			<p>Las toxinas que se producen por la presencia de bacterias en la placa irritan las enc&iacute;as. Al permanecer por mucho tiempo en el mismo lugar, las toxinas provocan que las enc&iacute;as se desprendan de los dientes y se forman bolsas periodontales, las cuales se llenan de m&aacute;s toxinas y bacterias. Conforme la enfermedad avanza, las bolsas se extienden y la placa penetra m&aacute;s y m&aacute;s hasta que el hueso que sostiene al diente se destruye. Eventualmente, el diente se caer&aacute; o necesitar&aacute; ser extra&iacute;do.</p>
 		</div>
@@ -1533,7 +1535,7 @@ COFEPRIS -->
 			<h4>Tips para prevenir la Periodontitis!</h4>
 			<p></p>
 			<ul>
-				<li>Un cepillado apropiado tres veces al d&iacute;a, as&iacute; como el uso del hilo dental diariamente ayudar&aacute;n a prevenir la enfermedad periodontal.</li> 
+				<li>Un cepillado apropiado tres veces al d&iacute;a, as&iacute; como el uso del hilo dental diariamente ayudar&aacute;n a prevenir la enfermedad periodontal.</li>
 				<li>Una limpieza profesional cada tres o seis meses, realizada en Cl&iacute;nicas Dentales Sonr&iacute;a por un odont&oacute;logo especialista en higiene dental, remover&aacute; la placa y el sarro en &aacute;reas dif&iacute;ciles de alcanzar ayudando a mantener la salud bucal.</li>
 			</ul>
 			<h4>Tambi&eacute;n puedes leer de: </h4>
@@ -1545,9 +1547,9 @@ COFEPRIS -->
 				<li><a href="?s=gingivitis_inflamacion_encias">Inflamaci&oacute;n de las encias</a></li>
 				<li><a href="?s=sangrado_de_encias">Sangrado de encias</a></li>
 			</ul>
-		</div>	
+		</div>
 
-	</div>  
+	</div>
 
 
 
@@ -1559,7 +1561,7 @@ COFEPRIS -->
 		<h1>SANGRADO DE ENCIAS</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; es el Sangrado de Encias?     </strong><br /></p>
-			<p>El sangrado de las enc&iacute;as es el principio de una alteraci&oacute;n bucal que podr&iacute;a desencadenar en una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a> o <a href="?s=periodontitis">enfermedad periodontal</a>.</p> 
+			<p>El sangrado de las enc&iacute;as es el principio de una alteraci&oacute;n bucal que podr&iacute;a desencadenar en una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a> o <a href="?s=periodontitis">enfermedad periodontal</a>.</p>
 			<p>El fen&oacute;meno de hemorragia gingival o sangrado de enc&iacute;as va acompa&ntilde;do normalmente de una inflamaci&oacute;n localizada o generalizada con un cambio de coloraci&oacute;n y un aumento de volumen.</p>
 			<p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
 			<p>La causa m&aacute;s frecuente del sangrado de enc&iacute;as es la remoci&oacute;n inadecuada de la placa dental que se acumula entre la enc&iacute;a y el diente, lo cual genera una condici&oacute;n denominada <a href="?s=gingivitis_inflamacion_encias">gingivitis</a> o inflamaci&oacute;n de las enc&iacute;as.</p>
@@ -1584,9 +1586,9 @@ COFEPRIS -->
 				<li><a href="?s=gingivitis_inflamacion_encias">Inflamaci&oacute;n de las encias</a></li>
 				<li><a href="?s=periodontitis">Periodontitis</a></li>
 			</ul>
-		</div>	
+		</div>
 
-	</div>  
+	</div>
 
 
 <?php } ?>
@@ -1597,7 +1599,7 @@ COFEPRIS -->
 		<h1>TERCEROS MOLARES</h1>
 		<div class="sidebar_info">
     			<p><strong>¿Qu&eacute; son los Terceros Molares?     </strong><br /></p>
-			<p>Los Terceros Molares, son los &uacute;ltimos dientes en erupcionar, y lo hacen entre los 17 y los 25 a&ntilde;os de vida.</p> 
+			<p>Los Terceros Molares, son los &uacute;ltimos dientes en erupcionar, y lo hacen entre los 17 y los 25 a&ntilde;os de vida.</p>
 			<p><strong>¿Pueden provocar dolor?     </strong><br /></p>
 			<p>La simple presencia de este &oacute;rgano dentario en boca no significa que tenga que haber patolog&aacute;a, pueden ser asintom&aacute;ticos y participar al igual que los dem&aacute;s dientes, en las funciones normales del sistema.</p>
 			<p><strong>¿Pueden provocar complicaciones?     </strong><br /></p>
@@ -1623,9 +1625,9 @@ COFEPRIS -->
 				<li><a href="?s=sangrado_de_encias">Sangrado de encias</a></li>
 				<li><a href="?s=periodontitis">Periodontitis</a></li>
 			</ul>
-		</div>	
+		</div>
 
-	</div>  
+	</div>
 
 
 <?php } ?>
@@ -1655,7 +1657,7 @@ COFEPRIS -->
       		<p>Con m&aacute;s de 20 a&ntilde;os de experiencia en el mercado Colombiano, el grupo de empresarios incursiona en M&eacute;xico en  el anio 2005, replicando este modelo de atenci&oacute;n integral, ofreciendo al mercado mexicano un concepto diferente en la atenci&oacute;n de la salud oral, con altos valores de profesionalismo.</p>
 	      	<p>Sonr&iacute;a, es una cl&iacute;nica especializada en solucionar las necesidades en salud oral con un equipo de m&eacute;dicos especialistas en todas las ramas odontol&oacute;gicas.</p>
       		<p>En sus unidades se ofrecen los servicios odontol&oacute;gicos m&aacute;s completos  para toda la familia que incluyen:</p>
-      
+
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr valign="top">
     <td><ul>
@@ -1664,16 +1666,16 @@ COFEPRIS -->
         <li>Rehabilitaci&oacute;n</li>
         <li>Periodoncia</li>
         <li>Ortodoncia</li>
-        
-  
+
+
       </ul></td>
     <td><ul>
-        
+
         <li>Odontopediatr&iacute;a</li>
         <li>Cirug&iacute;a</li>
         <li>Est&eacute;tica dental</li>
         <li>Blanqueamientos</li>
-  
+
       </ul></td>
   </tr>
 </table>
@@ -1681,8 +1683,8 @@ COFEPRIS -->
 			<p>Actualmente cuenta con un promedio de 9 unidades que operan con buena rentabilidad, incrementando en forma constante su posicionamiento con el consumidor.</p>
 			<p>  <font color="white"> . </font></p>
           <h4 style="font-size:19px; text-align:left;">BENEFICIOS</h4>
-			
-			
+
+
       <ul>
         <li>Ubicaci&oacute;n de las Cl&iacute;nicas </li>
         <li>Materiales de alta calidad</li>
@@ -1697,8 +1699,8 @@ COFEPRIS -->
         <li>Posicionamiento de marca</li>
         <li>Asistencia y asesor&iacute;a permanente</li>
         <li>Manuales operativos</li>
-        
-  
+
+
       </ul>
 		<p>  <font color="white"> . </font></p>
           <h4 style="font-size:19px; text-align:left;">PROCESO DE OTORGAMIENTO</h4>
@@ -1714,10 +1716,10 @@ COFEPRIS -->
             <li>Firma de contrato</li>
             <li>Formaci&oacute;n (entrega de manuales y capacitaci&oacute;n)</li>
             <li>Apertura de Franquicia</li>
-           
+
           </ol>
-			
-			
+
+
 		</div>
 	</div>
 
@@ -1729,22 +1731,22 @@ COFEPRIS -->
 
 
 
-    
+
      <?php if ($sec=="sugerencias"){ ?>
   <div class="sidebarRight" style="background:url(img/back_sugerencias.jpg)" >
- 
+
   <h1 class="titulos">SUGERENCIAS</h1>
   <h2 class="titulos">Queremos saber tu opini&oacute;n</h2>
 
-  
+
   <div class="sidebar_info secciones">
-    
-      <p>Si tienes alg&uacute;n comentario o sugerencia 
+
+      <p>Si tienes alg&uacute;n comentario o sugerencia
         favor de hac&eacute;rnoslo saber.
-        
+
         Cl&iacute;nicas dentales Sonr&iacute;a agradece tu tiempo.
       </p>
-    
+
     <form id="form1" name="form1" method="post" action="">
         <p>
           <label for="Email"></label>
@@ -1759,7 +1761,7 @@ COFEPRIS -->
         <p>
           <textarea name="Sugerencia" id="Sugerencia" rows="5" placeholder="Sugerencia"></textarea>
         </p>
-      
+
         <p>
           <input type="submit" name="button" id="button" value="Enviar" />
         </p>
@@ -1768,13 +1770,13 @@ COFEPRIS -->
 
 
   </div></div>
-    
+
 <?php } ?>
 <?php if ($sec=="contacto"){ ?>
 	<div class="sidebarRight" >
 		<h1 class="titulos">CONTACTO</h1>
 		<h2 class="titulos">Ac&eacute;rcate a nosotros!</h2>
-		<div class="sidebar_info secciones" >		
+		<div class="sidebar_info secciones" >
 			<p style=" margin-bottom:10px; margin-top:-10px;">Ll&aacute;manos!, con gusto te atenderemos.
 			<br />
       			<span style="font-size:26px; color:#6DC3C5"><strong><a href="tel:%2B525555113400">55 11 34 00</a></strong></span>
@@ -1788,10 +1790,10 @@ COFEPRIS -->
 					<a href="tel:%2B525511638329"> 11 63 83 29</a> / <a href="tel:%2B525524592727"> 24 59 27 27</a> / <a href="tel:%2B525511638245"> 11 63 82 45</a>
 					</p>
 					<p><strong>Cl&iacute;nica Barranca del Muerto:</strong><br />
-					<a href="tel:%2B525568213019"> 68 21 30 19</a> / <a href="tel:%2B525556510594"> 56 51 05 94</a> / <a href="tel:%2B525556510346"> 56 51 03 46</a> 
+					<a href="tel:%2B525568213019"> 68 21 30 19</a> / <a href="tel:%2B525556510594"> 56 51 05 94</a> / <a href="tel:%2B525556510346"> 56 51 03 46</a>
 					</p>
 					<p><strong>Cl&iacute;nica Coapa:</strong>    <br />
-					<a href="tel:%2B525555114559"> 55 11 45 59</a> / <a href="tel:%2B525555114560"> 55 11 45 60</a> / <a href="tel:%2B525555114558"> 55 11 45 58</a> 
+					<a href="tel:%2B525555114559"> 55 11 45 59</a> / <a href="tel:%2B525555114560"> 55 11 45 60</a> / <a href="tel:%2B525555114558"> 55 11 45 58</a>
 					</p>
 					<p><strong>Cl&iacute;nica Del Valle:</strong><br />
 					<a href="tel:%2B525552071325">52 07 13 25</a> / <a href="tel:%2B525552072123"> 52 07 21 23</a> / <a href="tel:%2B525552071468"> 52 07 14 68</a>
@@ -1807,17 +1809,17 @@ COFEPRIS -->
 					</p>
 
 					<p><strong>Cl&iacute;nica Polanco:</strong> <br />
-     					<a href="tel:%2B525552039396"> 52 03 93 96</a> / <a href="tel:%2B525552540912"> 52 54 09 12</a> / <a href="tel:%2B525552035201"> 52 03 52 01</a> 
+     					<a href="tel:%2B525552039396"> 52 03 93 96</a> / <a href="tel:%2B525552540912"> 52 54 09 12</a> / <a href="tel:%2B525552035201"> 52 03 52 01</a>
 					</p>
 
 					<p><strong>Cl&iacute;nica Miguel A. Quevedo:</strong> <br />
-     					<a href="tel:%2B525555113400"> 55 11 34 00</a> 
+     					<a href="tel:%2B525555113400"> 55 11 34 00</a>
 					</p>
 
 					<p><strong>Cl&iacute;nica Roma:</strong> <br />
-     					<a href="tel:%2B525555113424"> 55 11 34 24</a> / <a href="tel:%2B525555113440"> 55 11 34 40</a> / <a href="tel:%2B525511639770"> 11 63 97 70</a>      
+     					<a href="tel:%2B525555113424"> 55 11 34 24</a> / <a href="tel:%2B525555113440"> 55 11 34 40</a> / <a href="tel:%2B525511639770"> 11 63 97 70</a>
 					</p>
-					
+
 
 					<p><strong>Cl&iacute;nica Taxque&ntilde;a:</strong><br />
 					<a href="tel:%2B525553364057"> 53 36 40 57</a> / <a href="tel:%2B525553360847"> 53 36 08 47</a> / <a href="tel:%2B525553360878"> 53 36 08 78</a>
@@ -1826,19 +1828,19 @@ COFEPRIS -->
 			</div>
 		</div>
 		<div class="sidebar_info secciones" style="margin-left:30px; margin-top:30px; ">
-   
-   
+
+
    <?php if (isset($_GET["rc"])){ ?>
-   
+
     <div class="retro" style="color:#666">
     <p>Gracias por contactarnos.</p>
     <p>Pronto recibir&aacute; la informaci&oacute;n solicitada.</p>
     </div>
-    
+
     <?php }else{  ?>
-    
+
     <p style="margin-top:75px">D&eacute;janos tus datos y a la brevedad nos pondremos en contacto.</p>
-    
+
     <form id="form1" name="form1" method="post" action="contacto2.php">
     <p>
           <label for="Email_contacto"></label>
@@ -1863,28 +1865,28 @@ COFEPRIS -->
         <p>
           <textarea name="Comentario_contacto" id="Comentario_contacto" rows="5" placeholder="Escriba aqu&iacute;..."></textarea>
         </p>
-      
+
         <p>
           <input name="button" type="submit" id="button" onclick="MM_validateContacto('Nombre_contacto','','R','Email_contacto','','RisEmail','Telefono_contacto','','NisNum');return document.MM_returnValue" value="Enviar" />
         </p>
 
     </form>
     <?php }?>
-    
+
   </div>
-  
+
   </div>
-    
+
 
 <?php } ?>
-    
+
      <?php if ($sec=="diferentes"){ ?>
   <div class="sidebarRight" style="background:url(img/back_diferentes.jpg)" >
- 
+
   <h1 class="titulos">SOMOS DIFERENTES!</h1>
   <h2 class="titulos">Qu&eacute; nos hace diferentes?</h2>
 
-  
+
   <div class="sidebar_info secciones">
     <ul>
       <li>La atenci&oacute;n personalizada, el uso de la mejor tecnolog&iacute;a y materiales odontol&oacute;gicos, as&iacute; como la implementaci&oacute;n de los est&aacute;ndares que ofrecemos a todos nuestros pacientes.</li>
@@ -1901,14 +1903,14 @@ COFEPRIS -->
       </h4>
   </div></div>
     <?php } ?>
-    
+
     <?php if ($sec=="mision"){ ?>
   <div class="sidebarRight" style="background:url(img/back_mision_vision_compromiso.jpg)" >
- 
+
   <h1 class="titulos">ACERCA DE SONR&Iacute;A</h1>
   <h2 class="titulos">Somos tu mejor opci&oacute;n</h2>
 
-  
+
   <div class="sidebar_info secciones">
         <h3>MISI&Oacute;N</h3>
     <p>Contribuir a que M&eacute;xico SONR&Iacute;A.</p>
@@ -1920,10 +1922,10 @@ COFEPRIS -->
     <p>Tenemos un compromiso con la calidad y el mejoramiento continuo de nuestros procesos odontol&oacute;gicos.</p>
   </div></div>
     <?php } ?>
-    
+
     <?php if ($sec=="privacidad"){ ?>
   <div class="sidebarRight">
- 
+
   <h1 class="titulos">AVISO DE PRIVACIDAD</h1>
   <h2 class="titulos">En Sonria cuidamos tu informaci&oacute;n </h2>
   <div class="sidebar_info secciones" style="width:650px; overflow: auto; height:445px;">
@@ -1959,10 +1961,10 @@ COFEPRIS -->
       g) Cl&iacute;nicas Dentales Sonr&iacute;a comparte la responsabilidad del cuidado de la  informaci&oacute;n con sus empleados, haci&eacute;ndolos copart&iacute;cipes de los lineamientos  expuestos en los documentos de &quot;Pol&iacute;ticas de  privacidad/confidencialidad&quot;.</p>
 
   </div></div>
-  
-  
+
+
     <?php } ?>
-    
+
         <?php if ($sec=="novedades"){ ?>
   <div class="sidebarRight" style="width:616px; height:572px;">
 
@@ -1970,32 +1972,32 @@ COFEPRIS -->
   <?php }else{?>
   <h1 class="novedades"><?php echo $row_novedades['novedades_titulo']; ?></h1>
   <?php }?>
-  
+
     <?php if ($row_novedades['novedades_titulo'] == "<img src='img/logo_invisalign.png' width='200' />"){ ?>
     <h2 class="novedades" style="margin-top:290px;"><?php echo $row_novedades['novedades_subtitulo']; ?></h2>
 	<?php }else{?>
     <h2 class="novedades"><?php echo $row_novedades['novedades_subtitulo']; ?></h2>
     <?php }?>
-    
+
     <div class="novedad_img">
   <img src="img/<?php echo $row_novedades['novedades_img']; ?>" height="224" />
   </div>
-  
+
   <?php if ($row_novedades['novedades_titulo'] == "<img src='img/logo_invisalign.png' width='200' />"){ ?>
   <div class="sidebar_info novedades_info" style="margin-top:108px;"><?php echo $row_novedades['novedades_desc']; ?></div>
   <?php }else{  ?>
   <div class="sidebar_info novedades_info"><?php echo $row_novedades['novedades_desc']; ?></div>
   <?php }?>
-  
+
   </div>
 
-    <?php include("pie_home.php"); ?>  
+    <?php include("pie_home.php"); ?>
 
 <?php } ?>
-    
+
             <?php if ($sec=="novedades2"){ ?>
   <div class="sidebarRight" style="width:616px; height:572px;">
- 
+
   <h1 class="novedades">Tratamiento reconstructivo periodental</h1>
   <h2 class="novedades">Regeneraci&oacute;n de hueso y/o enc&iacute;as</h2><img src="img/novedades2.jpg" />
   <div class="sidebar_info novedades_info">
@@ -2005,13 +2007,13 @@ COFEPRIS -->
     <p>      El paciente deber&aacute;  ser&nbsp; valorado por un especialista para  determinar si este tratamiento estar&iacute;a indicado en su caso.</p>
   </div></div>
 
-    <?php include("pie_home.php"); ?>  
+    <?php include("pie_home.php"); ?>
 
     <?php } ?>
-    
+
             <?php if ($sec=="novedades3"){ ?>
   <div class="sidebarRight" style="width:616px; height:572px;">
- 
+
   <h1 class="novedades">Invisalign&reg;</h1>
   <h2 class="novedades">Tecnolog&iacute;a de punta en ortodoncia</h2><img src="img/novedades3.jpg" />
   <div class="sidebar_info novedades_info">
@@ -2021,17 +2023,17 @@ COFEPRIS -->
     <p > No interfiere con  estilo de vida.</p>
     <p > Sin alambres ni  aparatos met&aacute;licos que irriten su boca y, lo mejor de todo, casi nadie notar&aacute;  que est&aacute; en tratamiento. Invisalign&reg;, la alternativa evidente a los aparatos  fijos, elegida por las personas que desean una bonita sonrisa </p>
 <p>&nbsp;</p>
-      
+
 
 </div></div>
 
-    <?php include("pie_home.php"); ?>  
+    <?php include("pie_home.php"); ?>
 
     <?php } ?>
-    
+
      <?php if ($sec=="convenios"){ ?>
 <div class="sidebarRight">
- 
+
   <h1 class="titulos">SONRISAS ALIADAS</h1>
   <h2 class="titulos">Beneficios para clientes corporativos</h2>
   <div class="sidebar_info secciones" style="width:650px; overflow: auto; height:445px;">
@@ -2067,18 +2069,18 @@ COFEPRIS -->
 <!--    <div class="logos"><img src="convenios/walmart_03.jpg" width="113" height="17" /></div></p> -->
 
 </div></div>
-  
-  
+
+
     <?php } ?>
-    
-    
+
+
     <?php if ($sec=="consulta"){ ?>
   <div class="sidebarRight" style="background:url(img/back_consulta.jpg)" >
- 
+
   <h1 class="titulos">CONSULTA</h1>
   <h2 class="titulos">de Valoraci&oacute;n!</h2>
 
-  
+
   <div class="sidebar_info secciones">
   <p>&nbsp;</p>
   <p>&nbsp;</p>
@@ -2091,20 +2093,20 @@ COFEPRIS -->
       </h4>
   </div></div>
     <?php } ?>
-    
-    
-    
-    
-    
+
+
+
+
+
     <?php if ($sec=="unete"){ ?>
   <div class="sidebarRight" style="background:url(img/back_unete.jpg)" >
- 
+
   <h1 class="titulos">&Uacute;NETE!</h1>
   <h2 class="titulos">a nuestro equipo de trabajo!</h2>
 
-  
+
   <div class="sidebar_info secciones" style="margin-top:">
-    
+
     <p>La misi&oacute;n de Cl&iacute;nicas Dentales es contribuir a que M&eacute;xico Sonr&iacute;a, somos un grupo de personas emprendedoras, en donde el respeto, la honestidad, la actitud de servicio, la responsabilidad, el compromiso y la lealtad contribuyen a la excelencia de Cl&iacute;nicas Dentales Sonr&iacute;a.</p>
   </div>
   <div class="sidebar_info secciones" style="margin-left:30px; margin-top:60px;">
@@ -2113,96 +2115,96 @@ COFEPRIS -->
     <h4>OFICINAS</h4>
     <p>Nuestras oficinas se encuentran en la calle de Tonal&aacute; no. 6, col. Roma, Delegaci&oacute;n Cuauht&eacute;moc, M&eacute;xico D.F., C.P. 06700.</p>
   </div>
-  
+
   </div>
     <?php } ?>
-    
+
         <?php if ($sec=="sucursales"){ ?>
   <div class="sidebarRight" >
-  
+
   <h1 class="titulos">UNA SUCURSAL CERCA DE TI</h1>
 <div class="sidebar_info secciones" style="margin-top:80px; width:650px; " >
-  
+
   <?php do { ?>
 
-  
+
     <div class="sucursal">
       <a href="?s=sucursal&id=<?php echo $row_sucrusales_seccion['sucursal_id']; ?>">
       <div class="img"><img src="sucursales/thumb_<?php echo $row_sucrusales_seccion['img']; ?>"  alt="" /></div>
         CL&Iacute;NICA <?php echo $row_sucrusales_seccion['sucursal']; ?></a> </div>
-    <?php } while ($row_sucrusales_seccion = mysql_fetch_assoc($sucrusales_seccion)); ?>
+    <?php } while ($row_sucrusales_seccion = mysqli_fetch_array($sucrusales_seccion)); ?>
 <!--<div class="sucursal">
-  <a href="?s=sucursal_coapa"><img src="sucursales/coapa.jpg"  alt="" /><br /> 
-    CL&Iacute;NICA COAPA</a> </div>  
+  <a href="?s=sucursal_coapa"><img src="sucursales/coapa.jpg"  alt="" /><br />
+    CL&Iacute;NICA COAPA</a> </div>
     <div class="sucursal">
     <a href="?s=sucursal_valle"><img src="sucursales/valle.jpg"  alt="" /><br />
-      CL&Iacute;NICA DEL VALLE</a></div>    
-    
+      CL&Iacute;NICA DEL VALLE</a></div>
+
     <div class="sucursal">
   <a href="?s=sucursal_lindavista"><img src="sucursales/lindavista.jpg"  alt="" /><br />
     CL&Iacute;NICA LINDAVISTA</a>
     </div>
 <div class="sucursal">
-  <a href="?s=sucursal_neza"><img src="sucursales/neza.jpg"  alt="" /><br /> 
-    CL&Iacute;NICA NEZA</a> </div>    
-    
+  <a href="?s=sucursal_neza"><img src="sucursales/neza.jpg"  alt="" /><br />
+    CL&Iacute;NICA NEZA</a> </div>
+
         <div class="sucursal">
     <a href="?s=sucursal_roma"><img src="sucursales/roma.jpg"  alt="" /><br />
       CL&Iacute;NICA ROMA</a></div>
-    
+
     <div class="sucursal">
     <a href="?s=sucursal_tasquena"><img src="sucursales/taxquena.jpg"  alt="" /><br />
       CL&Iacute;NICA TAXQUE&Ntilde;A</a></div>-->
-  
 
-  
 
-  
+
+
+
 </div>
-  
+
 </div>
     <?php } ?>
-    
+
     <?php if ($sec=="sucursal"){ ?>
   <div class="sidebarRight clinicas">
- 
+
   <h1 ><?php echo $row_sucursales['sucursal']; ?></h1>
   <h2 >Cl&iacute;nica</h2>
 
-  
+
   <div class="sidebar_info secciones" style="margin-top:">
-    
+
     <div><?php echo $row_sucursales['sucursal_direccion']; ?></div>
 <p style="margin-top:0;"><strong>Tel. <?php echo $row_sucursales['sucursal_tel']; ?> </strong></p>
 
     <div><?php echo $row_sucursales['sucursal_mapa']; ?></div>
   </div>
   <div class="sidebar_info secciones" style="margin-left:30px; margin-top:50px;">
-    
+
         <h3>GALER&Iacute;A </h3>
     <div style="clear:both; height:10px;"></div>
-    
+
     <?php do { ?>
       <a rel="example_group" href="sucursales/<?php echo $row_img_sucursales['img']; ?>">
       <div class="thumbs"><img alt="example4" src="sucursales/thumb_<?php echo $row_img_sucursales['img']; ?>" /></div>
       </a>
-      <?php } while ($row_img_sucursales = mysql_fetch_assoc($img_sucursales)); ?>
-    
-    
-  
+      <?php } while ($row_img_sucursales = mysqli_fetch_array($img_sucursales)); ?>
+
+
+
   </div>
-  
+
   </div>
     <?php } ?>
-    
-      
-    
+
+
+
   <?php if ($sec=="acerca2"){ ?>
   <div class="sidebarRight" >
   <img src="img/imagn_03.png" />
   <h1>ACERCA DE SONR&Iacute;A</h1>
   <h2>Somos tu mejor opci&oacute;n!</h2>
-  
+
   <div class="sidebar_info">
   <ul>
     <li>Especialidades en cada cl&iacute;nica: <br />
@@ -2219,7 +2221,7 @@ COFEPRIS -->
     <li>Porque t&uacute; eres lo m&aacute;s importante para nosotros y sabemos que tu tiempo es valioso, te ofrecemos los siguientes horarios:</li>
   </ul>
   </div>
-  
+
   <div class="sidebar_info" style="margin-top:-10px; margin-left:10px;">
     <h3>MISI&Oacute;N</h3>
     <p>Contribuir a que M&eacute;xico SONR&Iacute;A.</p>
@@ -2232,31 +2234,31 @@ COFEPRIS -->
 <div class="horarios">Lunes a viernes de 11:00 a 20:00<br />
 S&aacute;bados de 9:00 a 18:00</div>
   </div>
-  
+
   </div>
     <?php } ?>
-    
-    
-    
-  
+
+
+
+
     <div style="clear:both;"></div>
     <div class="submenu">
       <?php do { ?>
         <a <?php if ($sec=="tratamiento" && $_GET["id"] ==$row_tratamientos_botones['tratamiento_id']){; ?> class="activo"<?php }?> href="?s=tratamiento&id=<?php echo $row_tratamientos_botones['tratamiento_id']; ?>">
           <div class="title"><?php echo $row_tratamientos_botones['tratamiento']; ?></div>
           <?php echo $row_tratamientos_botones['tratamiento_subtitulo']; ?></a>
-        <?php } while ($row_tratamientos_botones = mysql_fetch_assoc($tratamientos_botones)); ?>
-   
+        <?php } while ($row_tratamientos_botones = mysqli_fetch_array($tratamientos_botones)); ?>
+
     </div>
   <div class="sucursales"><a href="?s=membresia"><img src="img/tarjetamembresia_03.png" width="180" height="132" /></a>
     <div class="texto"><span><strong><a href="?s=sucursales">NUESTRAS SUCURSALES</a></strong></span><a href="?s=sucursales"> siempre cerca de ti</a></div>
   </div>
   <div class="membresia">
- 
+
   <div class="texto"><a href="?s=membresia"><span>Obt&eacute;n tu</span><br /> Membres&iacute;a</a></div>
   <div class="telefono"><a style="font-size:30px; text-decoration:none; color:#FFF" href="tel:%2B525555113400">55 11 34 00</a><a href="https://www.facebook.com/sonriamexico?fref=ts" target="_blank"><img src="img/logoface_03.png" width="32" height="32" alt="facebook" /></a><br />
     <a style="font-size:18px; text-decoration:none; color:#FFF" href="mailto:servicioalcliente@sonria.com.mx">servicioalcliente@sonria.com.mx</a></div>
-  
+
   </div>
   <div class="footer_menu">
   <div class="footer_menu_float"><h1>ACERCA DE SONR&Iacute;A</h1>
@@ -2272,7 +2274,7 @@ FIN COFEPRIS -->
 <div class="footer_menu_float"><h1>NUESTRAS SUCURSALES</h1>
 	<?php do { ?>
 	  <a href="?s=sucursal&id=<?php echo $row_sucursales_footer['sucursal_id']; ?>" title="Cl&iacute;nica <?php echo $row_sucursales_footer['sucursal']; ?>">Cl&iacute;nica <?php echo $row_sucursales_footer['sucursal']; ?></a><br />
-	  <?php } while ($row_sucursales_footer = mysql_fetch_assoc($sucursales_footer)); ?>
+	  <?php } while ($row_sucursales_footer = mysqli_fetch_array($sucursales_footer)); ?>
 </div>
 
 <!--INICIO COFEPRIS
@@ -2281,7 +2283,7 @@ FIN COFEPRIS -->
   <h1>NUESTROS TRATAMIENTOS</h1>
   <?php do { ?>
     <a href="?s=tratamiento&id=<?php echo $row_tratamientos_footer['tratamiento_id']; ?>" title="<?php echo $row_tratamientos_footer['tratamiento']; ?>"><?php echo $row_tratamientos_footer['tratamiento']; ?></a><br />
-    <?php } while ($row_tratamientos_footer = mysql_fetch_assoc($tratamientos_footer)); ?>
+    <?php } while ($row_tratamientos_footer = mysqli_fetch_array($tratamientos_footer)); ?>
 
 </div>
 FIN COFEPRIS -->
@@ -2290,7 +2292,7 @@ FIN COFEPRIS -->
 <div class="footer_menu_float"><h1>ATENCI&Oacute;N A PACIENTES</h1>
 	<a href="?s=membresia">Membres&iacute;a Sonr&iacute;a</a><br />
 	<a href="?s=financiamiento">Financiamiento</a><br />
-	<a href="?s=pagosonline">Pagos en l&iacute;nea </a><br />  
+	<a href="?s=pagosonline">Pagos en l&iacute;nea </a><br />
 	<!--<a href="?s=promociones">Promociones</a><br />-->
 	<a href="?s=consulta">Consulta de Valoraci&oacute;n</a><br />
 	<!--<a href="?s=sugerencias">Sugerencias </a><br />-->
@@ -2313,12 +2315,12 @@ FIN COFEPRIS -->
 </div>
 
 FIN COFEPRIS -->
-  
+
     <div class="footer">
     <p>Todos los Derechos Reservados &reg; Sonr&iacute;a 2017</p>
     <!-- end .footer --></div>
   <!-- end .container --></div>
-  
+
 </div>
 
 
@@ -2328,31 +2330,30 @@ FIN COFEPRIS -->
 </html>
 <?php
 if ($sec=="home" || $sec=="novedades"){
-mysql_free_result($novedades);
+mysqli_free_result($novedades);
 }
 
 if ($sec=="home"){
-mysql_free_result($promociones);
+mysqli_free_result($promociones);
 
+if(isset($sucursales)) mysqli_free_result($sucursales);
 
-mysql_free_result($sucursales);
+if(isset($img_sucursales)) mysqli_free_result($img_sucursales);
 
-mysql_free_result($img_sucursales);
+if(isset($sucrusales_menu)) mysqli_free_result($sucrusales_menu);
 
-mysql_free_result($sucrusales_menu);
+if(isset($tratamientos_menu)) mysqli_free_result($tratamientos_menu);
 
-mysql_free_result($tratamientos_menu);
+if(isset($tratamientos_botones)) mysqli_free_result($tratamientos_botones);
 
-mysql_free_result($tratamientos_botones);
+if(isset($tratamientos)) mysqli_free_result($tratamientos);
 
-mysql_free_result($tratamientos);
+if(isset($tratamientos_slider)) mysqli_free_result($tratamientos_slider);
 
-mysql_free_result($tratamientos_slider);
+if(isset($sucursales_footer)) mysqli_free_result($sucursales_footer);
 
-mysql_free_result($sucursales_footer);
+if(isset($tratamientos_footer)) mysqli_free_result($tratamientos_footer);
 
-mysql_free_result($tratamientos_footer);
-
-mysql_free_result($sucrusales_seccion);
+if(isset($sucrusales_seccion)) mysqli_free_result($sucrusales_seccion);
 }
 ?>
