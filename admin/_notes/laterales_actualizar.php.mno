@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_prensa" value="name:nota_tipo_id;datatype:int,name:nota_tipo;datatype:string" />
+	<infoitem key="UD_documentos" value="name:doc_id;datatype:int,name:doc_titulo;datatype:string,name:doc_url;datatype:string,name:doc_contenido;datatype:int,name:doc_tipo;datatype:int" />
+	<infoitem key="UD_notas_tipo" value="name:documentos_tipo_id;datatype:int,name:documentos_tipo;datatype:string" />
+	<infoitem key="UD_notas" value="name:doc_id;datatype:int,name:doc_titulo;datatype:string,name:doc_url;datatype:string,name:doc_contenido;datatype:int,name:doc_tipo;datatype:int" />
+	<infoitem key="UD_documentos_tipo" value="name:documentos_tipo_id;datatype:int,name:documentos_tipo;datatype:string" />
+	<infoitem key="UD_documentos_tipos" value="name:documentos_tipo_id;datatype:int,name:documentos_tipo;datatype:string" />
+</info>

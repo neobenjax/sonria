@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_proyectos" value="name:contenido_id;datatype:int,name:contenido_titulo;datatype:string,name:contenido_menu;datatype:string,name:contenido_subtitulo;datatype:string,name:contenido_desc;datatype:blob,name:contenido_video_titulo;datatype:string,name:contenido_video;datatype:string,name:contenido_ficha;datatype:string,name:contenido_nivel;datatype:int,name:contenido_tipo;datatype:int" />
+	<infoitem key="UD_consulta" value="name:contenido_id;datatype:int,name:contenido_titulo;datatype:string,name:contenido_menu;datatype:string,name:contenido_subtitulo;datatype:string,name:contenido_desc;datatype:blob,name:contenido_video_titulo;datatype:string,name:contenido_video;datatype:string,name:contenido_ficha;datatype:string,name:contenido_nivel;datatype:int,name:contenido_tipo;datatype:int" />
+	<infoitem key="UD_cuidado" value="name:contenido_id;datatype:int,name:contenido_titulo;datatype:string,name:contenido_menu;datatype:string,name:contenido_subtitulo;datatype:string,name:contenido_desc;datatype:blob,name:contenido_video_titulo;datatype:string,name:contenido_video;datatype:string,name:contenido_ficha;datatype:string,name:contenido_nivel;datatype:int,name:contenido_tipo;datatype:int" />
+</info>

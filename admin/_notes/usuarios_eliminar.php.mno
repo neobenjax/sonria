@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_instructoras" value="name:instructora_id;datatype:int,name:instructora_nombre;datatype:string,name:instructora_img;datatype:string,name:instructora_desc;datatype:string" />
+	<infoitem key="UD_usuarios" value="name:usuario_id;datatype:int,name:usuario_mail;datatype:string,name:usuario_pwd;datatype:string,name:usuario_perfil;datatype:int,name:usuario_nombre;datatype:string,name:usuario_apaterno;datatype:string,name:usuario_amaterno;datatype:string,name:usuario_edad;datatype:int,name:usuario_tel;datatype:int" />
+</info>

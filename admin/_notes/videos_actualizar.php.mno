@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_imagenes" value="name:img_id;datatype:int,name:img;datatype:string,name:img_thumb;datatype:string,name:img_desc;datatype:string,name:img_contenido;datatype:int" />
+	<infoitem key="UD_videos" value="name:video_id;datatype:int,name:video_url;datatype:string,name:video_titulo;datatype:string,name:video_proyecto;datatype:int,name:video_tipo;datatype:int" />
+</info>

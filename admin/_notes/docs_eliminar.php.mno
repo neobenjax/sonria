@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_publicaciones" value="name:doc_id;datatype:int,name:doc_url;datatype:string" />
+</info>

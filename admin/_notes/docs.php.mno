@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_faqs" value="name:faq_id;datatype:int,name:faq_pregunta;datatype:string,name:faq_respuesta;datatype:blob" />
+	<infoitem key="UD_docs" value="name:doc_id;datatype:int,name:doc_url;datatype:string" />
+</info>

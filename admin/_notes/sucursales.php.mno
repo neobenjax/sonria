@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_novedades" value="name:novedades_id;datatype:int,name:novedades_titulo;datatype:string,name:novedades_subtitulo;datatype:string,name:novedades_desc;datatype:blob,name:novedades_img;datatype:string" />
+	<infoitem key="UD_sucursales" value="name:sucursal_id;datatype:int,name:sucursal;datatype:string,name:sucursal_direccion;datatype:blob,name:sucursal_tel;datatype:string,name:sucursal_mapa;datatype:blob" />
+</info>

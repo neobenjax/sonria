@@ -1,0 +1,239 @@
+@charset "iso-8859-1";
+@import url(http://fonts.googleapis.com/css?family=Oxygen:400,700|Archivo+Narrow|Oswald|Raleway);
+body {
+	font-family: 'Oxygen', sans-serif;
+	font-size:12px;
+	background: #FFF;
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+/* ~~ Selectores de elemento/etiqueta ~~ */
+ul, ol, dl { /* Debido a las diferencias existentes entre los navegadores, es recomendable no añadir relleno ni márgenes en las listas. Para lograr coherencia, puede especificar las cantidades deseadas aquí o en los elementos de lista (LI, DT, DD) que contienen. Recuerde que lo que haga aquí se aplicará en cascada en la lista .nav, a no ser que escriba un selector más específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* la eliminación del margen superior resuelve un problema que origina que los márgenes escapen de la etiqueta div contenedora. El margen inferior restante lo mantendrá separado de los elementos de que le sigan. */
+	padding-right: 15px;
+	padding-left: 15px; /* la adición de relleno a los lados del elemento dentro de las divs, en lugar de en las divs propiamente dichas, elimina todas las matemáticas de modelo de cuadro. Una div anidada con relleno lateral también puede usarse como método alternativo. */
+}
+a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
+	border: none;
+}
+
+/* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+a:link {
+	color: #666;
+	text-decoration: none;
+	 /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+}
+a:visited {
+	color: #666;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
+	color: #fff;
+	text-decoration: none;
+}
+
+/* ~~ este contenedor rodea a todas las demás divs, lo que les asigna su anchura basada en porcentaje ~~ */
+.container {
+	width: 1024px;
+
+	background: #EEEEEE;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño. No es necesario si establece la anchura de .container en el 100%. */
+	overflow: hidden; /* esta declaración provoca que .container borre todas las columnas flotantes contenidas dentro de él. */
+}
+
+/* ~~ Estas son las columnas para el diseño. ~~ 
+
+1) El relleno sólo se sitúa en la parte superior y/o inferior de las divs. Los elementos situados dentro de estas divs tienen relleno a los lados. Esto le ahorra las "matemáticas de modelo de cuadro". Recuerde que si añade relleno o borde lateral a la div propiamente dicha, éste se añadirá a la anchura que defina para crear la anchura *total*. También puede optar por eliminar el relleno del elemento en la div y colocar una segunda div dentro de ésta sin anchura y el relleno necesario para el diseño deseado.
+
+2) No se asigna margen a las columnas, ya que todas ellas son flotantes. Si es preciso añadir un margen, evite colocarlo en el lado hacia el que se produce la flotación (por ejemplo: un margen derecho en una div configurada para flotar hacia la derecha). En muchas ocasiones, puede usarse relleno como alternativa. En el caso de divs para las que deba incumplirse esta regla, deberá añadir una declaración "display:inline" a la regla de la div para evitar un error que provoca que algunas versiones de Internet Explorer dupliquen el margen.
+
+3) Dado que las clases se pueden usar varias veces en un documento (y que también se pueden aplicar varias clases a un elemento), se ha asignado a las columnas nombres de clases en lugar de ID. Por ejemplo, dos divs de barra lateral podrían apilarse si fuera necesario. Si lo prefiere, éstas pueden cambiarse a ID fácilmente, siempre y cuando las utilice una sola vez por documento.
+
+4) Si prefiere que la navegación esté a la derecha en lugar de a la izquierda, simplemente haga que estas columnas floten en dirección opuesta (todas a la derecha en lugar de todas a la izquierda) y éstas se representarán en orden inverso. No es necesario mover las divs por el código fuente HTML.
+
+*/
+.sidebar1 {
+	height:100%;
+	display:block;
+	float: left;
+	margin-left:12px;
+	width: 176px;
+	
+
+}
+#logo{
+	padding:13px;
+	width: 150px;
+	background:#FFFFFF;
+}
+
+#logo a{
+	padding:0px;
+}
+.retro{
+	color:#FF0000;
+	font-weight: bold;
+	text-align:center;
+	margin-bottom:10px;
+}
+.add{
+	float:right;
+	margin-right:50px;
+}
+.combo{
+	float:left;
+	margin-top:-43px;
+	margin-left:100px;
+}
+.content {
+	width: 824px;
+	float: left;
+	background: #EEEEEE;
+	padding-bottom:10px;
+}
+
+h2 a, h2 a:visited{
+	color:#666;
+	padding:0 5px;
+	display:block;
+	float:left;
+	text-decoration:none;
+	margin-right:5px;
+}
+
+h2 a:hover{
+	color:#666;
+	padding:0 5px;
+	display:block;
+	float:left;
+	text-decoration:none;
+}
+
+h2 a.active{
+	background:#CCC;
+	color:#fff;
+	border-radius:3px;
+}
+
+
+.imagenes{
+	margin-left:10px;
+	margin-bottom:30px;
+	text-align:center;
+	float:left;
+}
+
+
+.imagenes a.cuadro{
+	width:320px;
+	height:200px;
+	overflow:hidden;
+
+	display:block;
+}
+.imagenes img{
+	height:200px;
+
+
+}
+.actualizar{
+	margin-left:10px;
+	margin-right:50px;
+	float:left;
+	
+}
+
+.consultar{
+	font-size:16px;
+	margin-left:20px;
+	margin-right:50px;
+	float:left;
+	
+}
+
+.actualizar img{
+	margin-right:10px;
+	margin-bottom:10px;
+	float:left;
+}
+.barra_inf{
+	padding-left:5px;
+	padding-right:5px;
+	background-color:#0B859E;
+	color:#FFFFFF;
+}
+
+.barra_inf a{
+	color:#FFF;
+}
+.tabla_usuarios{
+	border-color:#CCCCCC;
+	margin-left:10px;
+	margin-bottom: 10px;
+	float:left;
+}
+
+.fila{
+	background:#fff;
+	cursor: default;
+}
+
+input, textarea{
+	font-family: 'Oxygen', sans-serif;
+	color:#333;
+}
+/* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* este relleno reproduce en espejo el relleno derecho de la regla de encabezados y de párrafo incluida más arriba. El relleno se ha colocado en la parte inferior para que el espacio existente entre otros elementos de la lista y a la izquierda cree la sangría. Estos pueden ajustarse como se desee. */
+}
+
+/* ~~ Los estilos de lista de navegación (pueden eliminarse si opta por usar un menú desplegable predefinido como el de Spry) ~~ */
+ul.nav {
+	list-style: none; /* esto elimina el marcador de lista */
+	/*border-top: 1px solid #666;  esto crea el borde superior de los vínculos (los demás se sitúan usando un borde inferior en el LI) */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav li {
+	border-bottom: 1px solid #FFF; /* esto crea la separación de los botones */
+}
+ul.nav a, ul.nav a:visited, .boton { /* al agrupar estos selectores, se asegurará de que los vínculos mantengan el aspecto de botón incluso después de haber sido visitados */
+	padding: 5px 5px 5px 15px;
+	display: block; /* esto asigna propiedades de bloque al vínculo, lo que provoca que llene todo el LI que lo contiene. Esto provoca que toda el área reaccione a un clic de ratón. */
+	text-decoration: none;
+	background: #6DC3C5;
+	color: #FFF;
+}
+
+.boton{
+	width: 80px;
+	text-align:center;
+	padding:5px 0;
+	border:none;
+	font: 100%/1.4 'Carrois Gothic SC', sans-serif;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus, .boton:hover { /* esto cambia el color de fondo y del texto tanto para usuarios que naveguen con ratón como para los que lo hagan con teclado */
+	background: #0B859E;
+	color: #FFF;
+}
+
+/* ~~ clases float/clear varias ~~ */
+.fltrt {  /* esta clase puede utilizarse para que un elemento flote en la parte derecha de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* esta clase puede utilizarse para que un elemento flote en la parte izquierda de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* esta clase puede situarse en una <br /> o div vacía como elemento final tras la última div flotante (dentro de #container) si se elimina overflow:hidden en .container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}

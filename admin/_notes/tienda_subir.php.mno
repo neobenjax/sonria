@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_categorias" value="name:categoria_id;datatype:int,name:categoria_nom;datatype:string,name:cat_img;datatype:string,name:categoria_desc;datatype:string" />
+</info>

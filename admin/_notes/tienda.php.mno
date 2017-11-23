@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_noticias" value="name:noticia_id;datatype:int,name:noticia_nombre;datatype:string,name:noticia_img;datatype:string,name:noticia_desc;datatype:string" />
+	<infoitem key="UD_tienda" value="name:producto_id;datatype:int,name:producto_clave;datatype:string,name:producto_nom;datatype:string,name:producto_desc;datatype:string,name:producto_img;datatype:string,name:producto_precio;datatype:string,name:producto_boton;datatype:string,name:producto_categoria;datatype:int,name:producto_subcategoria;datatype:string" />
+	<infoitem key="UD_categorias" value="name:categoria_id;datatype:int,name:categoria_nom;datatype:string,name:cat_img;datatype:string,name:categoria_desc;datatype:string" />
+</info>

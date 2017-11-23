@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_instructoras" value="name:img_id;datatype:int,name:img_nom;datatype:string,name:img_desc;datatype:string" />
+	<infoitem key="UD_galeria" value="name:img_id;datatype:int,name:img_nom;datatype:string,name:img_desc;datatype:string" />
+</info>

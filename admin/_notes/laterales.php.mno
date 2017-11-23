@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_proyectos" value="name:nota_tipo_id;datatype:int,name:nota_tipo;datatype:string" />
+	<infoitem key="UD_documentos" value="name:doc_id;datatype:int,name:doc_titulo;datatype:string,name:doc_url;datatype:string,name:doc_contenido;datatype:int,name:doc_tipo;datatype:int,name:documentos_tipo_id;datatype:int,name:documentos_tipo;datatype:string" />
+</info>

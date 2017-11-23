@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_perfiles" value="name:perfil_id;datatype:int,name:perfil_tipo;datatype:string,name:perfil_desc;datatype:string" />
+</info>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_novedades" value="name:sucursal_id;datatype:int,name:sucursal;datatype:string,name:sucursal_direccion;datatype:blob,name:sucursal_tel;datatype:string,name:sucursal_mapa;datatype:blob" />
+	<infoitem key="UD_tratamientos" value="name:tratamiento_id;datatype:int,name:tratamiento;datatype:string,name:tratamiento_banner;datatype:string,name:tratamiento_header;datatype:string" />
+</info>

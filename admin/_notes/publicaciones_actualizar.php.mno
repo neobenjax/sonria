@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_noticias" value="name:noticia_id;datatype:int,name:noticia_nombre;datatype:string,name:noticia_img;datatype:string,name:noticia_desc;datatype:string" />
+	<infoitem key="UD_publicaciones" value="name:publi_id;datatype:int,name:publi_nombre;datatype:string,name:publi_file;datatype:string,name:publi_desc;datatype:string" />
+</info>

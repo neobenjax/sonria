@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_tratamientos" value="name:tratamiento_id;datatype:int,name:tratamiento;datatype:string,name:tratamiento_subtitulo;datatype:string,name:tratamiento_banner;datatype:string,name:tratamiento_header;datatype:string,name:tratamiento_contenido;datatype:blob,name:tratamiento_video;datatype:string,name:tratamiento_faqs;datatype:blob,name:tratamiento_menu;datatype:int" />
+</info>

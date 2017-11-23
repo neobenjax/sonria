@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_imagenes" value="name:book_img_id;datatype:int,name:book_img;datatype:string,name:book_img_book;datatype:int,name:book_page;datatype:int" />
+	<infoitem key="UD_Recordset1" value="name:book_img_id;datatype:int,name:book_img;datatype:string,name:book_img_book;datatype:int,name:book_page;datatype:int" />
+	<infoitem key="UD_imagen_portada" value="name:book_img_id;datatype:int,name:book_img;datatype:string,name:book_img_book;datatype:int,name:book_page;datatype:int" />
+	<infoitem key="UD_imagen_contraportada" value="name:book_img_id;datatype:int,name:book_img;datatype:string,name:book_img_book;datatype:int,name:book_page;datatype:int" />
+</info>

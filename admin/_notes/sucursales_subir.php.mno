@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_sucursales" value="name:sucursal_id;datatype:int,name:sucursal;datatype:string,name:sucursal_direccion;datatype:blob,name:sucursal_tel;datatype:string,name:sucursal_mapa;datatype:blob" />
+</info>

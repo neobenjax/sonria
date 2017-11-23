@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_imagenes" value="name:img_id;datatype:int,name:img;datatype:string,name:img_thumb;datatype:string,name:img_desc;datatype:string,name:img_contenido;datatype:int" />
+</info>

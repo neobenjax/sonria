@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<info>
+	<infoitem key="UD_notas" value="name:doc_id;datatype:int,name:doc_titulo;datatype:string,name:doc_url;datatype:string,name:doc_contenido;datatype:int,name:doc_tipo;datatype:int" />
+	<infoitem key="UD_documentos" value="name:doc_id;datatype:int,name:doc_titulo;datatype:string,name:doc_url;datatype:string,name:doc_contenido;datatype:int,name:doc_tipo;datatype:int" />
+</info>
