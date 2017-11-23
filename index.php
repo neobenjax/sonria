@@ -167,6 +167,7 @@ require_once('calendar/classes/tc_calendar.php');
 <!--Favicon -->
 <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <?php if ($sec=="home"){ ?>
 <title>Sonr&iacute;a - Cl&iacute;nicas Dentales</title>
 <?php }?>

@@ -1,18 +1,18 @@
 <?php require_once('../Connections/conn_sonria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -49,23 +49,23 @@ if (isset($_POST['usuario_mail'])) {
   $MM_redirectLoginSuccess = "promociones.php";
   $MM_redirectLoginFailed = "index.php";
   $MM_redirecttoReferrer = false;
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+
   $LoginRS__query=sprintf("SELECT usuario_mail, usuario_pwd FROM usuarios WHERE usuario_mail=%s AND usuario_pwd=%s",
-    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text")); 
-   
-  $LoginRS = mysql_query($LoginRS__query, $conn_sonria) or die(mysql_error());
-  $loginFoundUser = mysql_num_rows($LoginRS);
+    GetSQLValueString($loginUsername, "text"), GetSQLValueString($password, "text"));
+
+  $LoginRS = mysqli_query($conn_sonria, $LoginRS__query) or die(mysql_error());
+  $loginFoundUser = mysqli_num_rows($LoginRS);
   if ($loginFoundUser) {
      $loginStrGroup = "";
-    
+
 	if (PHP_VERSION >= 5.1) {session_regenerate_id(true);} else {session_regenerate_id();}
     //declare two session variables and assign them
     $_SESSION['MM_Username'] = $loginUsername;
-    $_SESSION['MM_UserGroup'] = $loginStrGroup;	      
+    $_SESSION['MM_UserGroup'] = $loginStrGroup;
 
     if (isset($_SESSION['PrevUrl']) && false) {
-      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];	
+      $MM_redirectLoginSuccess = $_SESSION['PrevUrl'];
     }
     header("Location: " . $MM_redirectLoginSuccess );
   }

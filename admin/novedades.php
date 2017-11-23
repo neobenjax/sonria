@@ -1,18 +1,18 @@
 <?php require_once('../Connections/conn_sonria.php'); ?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -31,21 +31,21 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 }
 
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_novedades = "SELECT * FROM novedades";
-$novedades = mysql_query($query_novedades, $conn_sonria) or die(mysql_error());
-$row_novedades = mysql_fetch_assoc($novedades);
-$totalRows_novedades = mysql_num_rows($novedades);
+$novedades = mysqli_query($conn_sonria, $query_novedades) or die(mysql_error());
+$row_novedades = mysqli_fetch_array($novedades);
+$totalRows_novedades = mysqli_num_rows($novedades);
 $query_novedades = "SELECT * FROM novedades ORDER BY novedades_id DESC";
-$novedades = mysql_query($query_novedades, $conn_sonria) or die(mysql_error());
-$row_novedades = mysql_fetch_assoc($novedades);
-$totalRows_novedades = mysql_num_rows($novedades);
+$novedades = mysqli_query($conn_sonria, $query_novedades) or die(mysql_error());
+$row_novedades = mysqli_fetch_array($novedades);
+$totalRows_novedades = mysqli_num_rows($novedades);
 ?>
 <?php include("restringir.php")?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Sonria - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
 <style>
@@ -58,10 +58,10 @@ ul.nav a { zoom: 1; }  /* la propiedad de zoom da a IE el desencadenante hasLayo
   <script type="text/javascript">
 
 $(document).ready(function () {
-	
+
     $(".tabla_usuarios").hide();
 	$(".tabla_usuarios").fadeIn();
-	
+
 	$(".fila").hover(function(){
     $(event.currentTarget).css("background-color","#ddd");
     },function(){
@@ -100,13 +100,13 @@ $(document).ready(function () {
           <td><?php echo $row_novedades['novedades_subtitulo']; ?></td>
           <td><a href="novedades_actualizar.php?id=<?php echo $row_novedades['novedades_id']; ?>">Actualizar</a> | <a href="novedades_eliminar.php?id=<?php echo $row_novedades['novedades_id']; ?>">Eliminar</a></td>
         </tr>
-        <?php } while ($row_novedades = mysql_fetch_assoc($novedades)); ?>
+        <?php } while ($row_novedades = mysqli_fetch_array($novedades)); ?>
     </table>
-    
+
     </div>
   <!-- end .container --></div>
 </body>
 </html>
 <?php
-mysql_free_result($novedades);
+mysqli_free_result($novedades);
 ?>
