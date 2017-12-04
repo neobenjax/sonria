@@ -168,173 +168,13 @@ require_once('calendar/classes/tc_calendar.php');
 <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<?php if ($sec=="home"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales</title>
-<?php }?>
 
-<?php if ($sec=="acerca"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Acerca de Sonr&iacute;a</title>
-<?php }?>
-
-<?php if ($sec=="mision"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Misi&oacute;n, Visi&oacute;n y Compromiso</title>
-<?php }?>
-
-<?php if ($sec=="unete"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Qui&eacute;res trabajar con nosotros?</title>
-<?php }?>
-
-<?php if ($sec=="diferentes"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Qu&eacute; nos hace diferentes?</title>
-<?php }?>
-
-<?php if ($sec=="sucursales"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Nuestras Sucursales</title>
-<?php }?>
-
-<?php if ($sec=="sucursal"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica <?php echo $row_sucursales['sucursal']; ?>
-</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_coapa"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica Coapa</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_valle"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica del Valle</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_lindavista"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica Lindavista</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_neza"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica Neza</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_roma"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica Roma</title>
-<?php }?>
-
-<?php if ($sec=="sucursal_tasquena"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cl&iacute;nica Taxque&ntilde;a</title>
-<?php }?>
-
-<?php if ($sec=="tratamientos"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Nuestros Tratamientos</title>
-<?php }?>
-
-<?php if ($sec=="contacto"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Contacto</title>
-<?php }?>
-
-<?php if ($sec=="membresia"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Membres&iacute;a</title>
-<?php }?>
-
-<?php if ($sec=="financiamiento"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Financiamiento</title>
-<?php }?>
-
-<?php if ($sec=="privacidad"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Aviso de Privacidad</title>
-<?php }?>
-
-<?php if ($sec=="convenios"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Convenios</title>
-<?php }?>
-
-<?php if ($sec=="novedades"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - <?php echo $row_novedades['novedades_titulo']; ?></title>
-<?php }?>
-
-<?php if ($sec=="tratamiento"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - <?php echo $row_tratamientos['tratamiento']; ?></title>
-<?php }?>
-
-<?php if ($sec=="pagosonline"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Abono a tratamientos en l&iacute;nea</title>
-<?php }?>
-
-
-<?php if ($sec=="pagosonlinepaypal"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Abono a tratamientos en l&iacute;nea - PayPal</title>
-<?php }?>
-
-<?php if ($sec=="membresiapaypal"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Membres&iacute;a - PayPal</title>
-<?php }?>
-
-<?php if ($sec=="dolor_de_muela"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Dolor de Muela</title>
-<?php }?>
-
-<?php if ($sec=="gingivitis_inflamacion_encias"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Gingivitis</title>
-<?php }?>
-
-<?php if ($sec=="halitosis_mal_aliento"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Halitosis - Mal Aliento</title>
-<?php }?>
-
-<?php if ($sec=="hipersensibilidad_sensibilidad_en_los_dientes"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Hipersensibilidad</title>
-<?php }?>
-
-<?php if ($sec=="periodontitis"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Periodontitis</title>
-<?php }?>
-
-<?php if ($sec=="sangrado_de_encias"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Sangrado de Enc&iacute;as</title>
-<?php }?>
-
-<?php if ($sec=="terceros_molares_muela_del_juicio"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Terceros Molares</title>
-<?php }?>
-
-<?php if ($sec=="bienvenido_a_sonria"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Bienvenido a Cl&iacute;nicas Dentales Sonr&iacute;a</title>
-<?php }?>
-
-<?php if ($sec=="franquicias_clinicas_dentales_sonria_mexico"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Franquicias Cl&iacute;nicas Dentales Sonr&iacute;a</title>
-<?php }?>
-
-<?php if ($sec=="cirugia"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Cirug&iacute;a</title>
-<?php }?>
-
-<?php if ($sec=="periodoncia"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Periodoncia</title>
-<?php }?>
-
-<?php if ($sec=="endodoncia"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Endodoncia</title>
-<?php }?>
-
-<?php if ($sec=="odontopediatria"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Odontopediatr&iacute;a</title>
-<?php }?>
-
-
-<?php if ($sec=="implantes"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Implantes</title>
-<?php }?>
-
-<?php if ($sec=="ortodoncia"){ ?>
-<title>Sonr&iacute;a - Cl&iacute;nicas Dentales - Ortodoncia</title>
-<?php }?>
-
-
-<meta name="keywords" content="Dentistas Dentista DF Odontologo Odontologos Implantes Clinicas Dentales Sonria Clinica Dental Sonria Ortodoncista Ortodoncistas Blanqueamiento Protesis" />
-<meta name="description" content="Sonr&iacute;a - Cl&iacute;nicas Dentales - Excelentes Especialistas, Mejores Sonrisas" />
+<?php include('includes/metas-site.php');?>
 
 <link href="css/estilo.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 		.oc { display:none;}
-	</style>
+</style>
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <?php if ($sec=="home" || $sec=="acerca" || $sec=="tratamientos" || $sec=="novedades"){ ?>
@@ -342,14 +182,12 @@ require_once('calendar/classes/tc_calendar.php');
   <!--[if IE 6]>
   <link rel="stylesheet" type="text/css" href="js/slider/themes/carbono/jquery.slider.ie6.css" />
   <![endif]-->
-
-
   <script type="text/javascript" src="js/slider/jquery.slider.min.js"></script>
 <?php }?>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
 
-<!--SLIDER-->
+//SLIDER
 
 <?php if ($sec=="home" || $sec=="acerca" || $sec=="tratamientos"){ ?>
     $(".slider").slideshow({
@@ -376,18 +214,18 @@ require_once('calendar/classes/tc_calendar.php');
       transition : 'SlipLeft',
 	  //delay 	 : 7000
     });
-<?php }?>
+<?php } ?>
 
-<!--PLACEHOLDER-->
+//PLACEHOLDER
 
-	    function placeholder(){
+    function placeholder(){
         $("input[type=text]").each(function(){
             var phvalue = $(this).attr("placeholder");
             $(this).val(phvalue);
         });
     }
 
-<!--PLACE HOLDER PARA FORMA DE CONTACTO-->
+//PLACE HOLDER PARA FORMA DE CONTACTO
     placeholder();
     $("input[type=text]").focusin(function(){
         var phvalue = $(this).attr("placeholder");
@@ -426,9 +264,8 @@ require_once('calendar/classes/tc_calendar.php');
 
 
 	<script>
-<?php if ($sec=="tratamiento" || $sec=="sucursal"){ ?>
-<!--VIDEOS INLINE-->
-
+	<?php if ($sec=="tratamiento" || $sec=="sucursal"){ ?>
+//VIDEOS INLINE
 		!window.jQuery && document.write('<script src="jquery-1.4.3.min.js"><\/script>');
 	</script>
 	<script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
@@ -669,8 +506,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 </div><!--back-->
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		$movilHeader = $('.movil-header');
+		$openMenu = $('.open-menu');
 
-
+		$openMenu.click(function(){
+			$movilHeader.toggleClass('open');
+		});
+	});
+</script>
 
 </body>
 </html>

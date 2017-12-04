@@ -76,7 +76,7 @@
       </a>
     </div>
     <div class="logo-m">
-      <a href="/">
+      <a href="?">
         <img src="img/logo_mobile.jpg" alt="Sonria">
       </a>
     </div>
