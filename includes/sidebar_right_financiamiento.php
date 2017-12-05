@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_financiamiento.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_financiamiento.jpg) no-repeat top right" >
   <h1 class="titulos">FINANCIAMIENTO</h1>
   <h2 class="titulos">Con meses sin intereses</h2>
   <div class="sidebar_info secciones">

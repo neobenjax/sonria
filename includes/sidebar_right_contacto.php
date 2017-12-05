@@ -1,4 +1,4 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content">
   <h1 class="titulos">CONTACTO</h1>
   <h2 class="titulos">Ac&eacute;rcate a nosotros!</h2>
   <div class="sidebar_info secciones" >

@@ -408,6 +408,8 @@ a.logo > img {
 	float:left;
 	width:300px;
 	margin-top:25px;
+	max-width: 300px;
+	width: 100%;
 }
 
 .sidebarRight .secciones{
@@ -418,6 +420,18 @@ a.logo > img {
 .sidebarRight .secciones .telefonos p{
 	font-size:13px;
 	margin-bottom:5px;
+}
+
+.sidebar_info.secciones._aviso-privacidad{
+	max-width: 650px;
+	overflow: auto;
+	height:445px;
+}
+.sidebar_info.secciones._aliados{
+	max-width: 650px;
+	overflow: auto;
+	height:445px;
+	height: auto;
 }
 .sidebarRight .secciones div p, .sidebarRight .secciones div div{
 	margin-top:0;
@@ -880,7 +894,9 @@ a.logo > img {
     display: inline-block;
     margin: 0 20px;
 }
-
+.formar-parte{
+	margin-top:200px;
+}
 @media only screen and (max-width: 1100px) {
 	body{
 		width:100%;
@@ -930,6 +946,12 @@ a.logo > img {
 		margin: 0 auto;
 		max-width: 100%;
 		width: 100%;
+		box-sizing: border-box;
+		height: auto;
+	}
+
+	.cont-banner-form .sidebarRight._centered-content {
+		padding: 0 60px;
 	}
 	.jquery-slider-wrapper{
 		margin: 0 auto;
@@ -954,6 +976,10 @@ a.logo > img {
 		padding: 4px 10px 5px;
 		box-sizing: border-box;
 	}
+	.sidebar_info.secciones._aviso-privacidad{
+		max-width:100%;
+		height: auto;
+	}
 	.sucursales img{
 		width: 150px;
 		height: auto;
@@ -966,6 +992,13 @@ a.logo > img {
 		font-size: 20px;
 		height: 50px;
 	}
+	.formar-parte{
+		margin-top:20px;
+	}
+	.sidebarLeft h1.titulos.unete {
+		position: relative;
+		margin-bottom:20px;
+	}
 }
 
 @media only screen and (max-width: 767px) {
@@ -976,6 +1009,9 @@ a.logo > img {
 		display:block;
 		position: relative;
 		padding-top: 82px;
+	}
+	.cont-banner-form .sidebarRight._centered-content {
+		padding: 0 20px;
 	}
 	.sucursales img{
 		width: 120px;
@@ -1032,6 +1068,19 @@ a.logo > img {
 		margin-bottom: 10px;
 		font-size: 16px;
 	}
+	.jquery-slider-wrapper{
+		max-width: 100%;
+	}
+
+	.jquery-slider-wrapper .slider_promociones {
+		/* max-width: 100%; */
+	}
+	.jquery-slider-selectors{
+		display: none!important;
+	}
+	img.img-banner {
+		max-width: 100%;
+	}
 }
 @media only screen and (max-width: 500px) {
 	.membresia{
@@ -1062,4 +1111,27 @@ a.logo > img {
 	.sucursales{
 		font-size: 14px;
 	}
+	.movil-header {
+		padding-top: 60px;
+	}
+	.movil-header .head {
+		padding: 10px 20px;
+		height: 60px;
+		width: 100%;
+	}
+	.movil-header .inner-nav{
+
+height: calc(100vh - 60px);
+
+top: 60px;
+	}
+
+	.movil-header .head .menu-m {
+		font-size: 24px;
+	}
+
+	.movil-header .head .logo-m a img {
+		width: 80px;
+	}
+
 }

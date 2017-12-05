@@ -1,4 +1,4 @@
-<div class="sidebarRight clinicas">
+<div class="sidebarRight clinicas _centered-content">
 
 <h1 ><?php echo $row_sucursales['sucursal']; ?></h1>
 <h2 >Cl&iacute;nica</h2>

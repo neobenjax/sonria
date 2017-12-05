@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_mision_vision_compromiso.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_mision_vision_compromiso.jpg) no-repeat top right" >
 
 <h1 class="titulos">ACERCA DE SONR&Iacute;A</h1>
 <h2 class="titulos">Somos tu mejor opci&oacute;n</h2>

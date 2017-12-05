@@ -1,4 +1,4 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
 
 <h1 class="titulos">UNA SUCURSAL CERCA DE TI</h1>
 <div class="sidebar_info secciones" style="margin-top:80px; width:650px; " >

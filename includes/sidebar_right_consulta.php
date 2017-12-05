@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_consulta.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_consulta.jpg) no-repeat top right" >
 
 <h1 class="titulos">CONSULTA</h1>
 <h2 class="titulos">de Valoraci&oacute;n!</h2>

@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_franquicias.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_franquicias.jpg) no-repeat top right" >
    		<h1 class="titulos">FRANQUICIAS</h1>
 		<!--<h2 class="titulos">Obtenla ya!</h2>
 		<p>  <font color="white"> . </p>-->

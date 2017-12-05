@@ -1,8 +1,8 @@
-<div class="sidebarRight">
+<div class="sidebarRight _centered-content">
 
 <h1 class="titulos">AVISO DE PRIVACIDAD</h1>
 <h2 class="titulos">En Sonria cuidamos tu informaci&oacute;n </h2>
-<div class="sidebar_info secciones" style="width:650px; overflow: auto; height:445px;">
+<div class="sidebar_info secciones _aviso-privacidad">
   <p><strong>Cl&iacute;nicas Dentales Sonr&iacute;a S.A. de  C.V.</strong> con  domicilio en Tonal&aacute; n&uacute;m. 6 P.B. Colonia Roma Norte, Delegaci&oacute;n Cuauht&eacute;moc, C.P.  06700, Distrito Federal, es el responsable del uso y protecci&oacute;n de sus datos  personales, y al respecto le informa lo siguiente:<br />
     Su informaci&oacute;n  est&aacute; segura con nosotros. Cl&iacute;nicas Dentales Sonr&iacute;a<strong> </strong>se compromete a asegurar la confidencialidad/privacidad de la  informaci&oacute;n personal obtenida a trav&eacute;s de sus servicios en l&iacute;nea. Le sugerimos  leer la normativa descrita a continuaci&oacute;n, para entender el tratamiento de su  informaci&oacute;n personal cuando utiliza nuestros servicios en los sitios de Cl&iacute;nicas  Dentales Sonr&iacute;a. Estas normas de confidencialidad pueden tener cambios en el  futuro, por lo que se recomienda revisarlas peri&oacute;dicamente.<br />
 <strong>1.- Tipo de informaci&oacute;n personal  que se obtiene</strong>. En Cl&iacute;nicas Dentales Sonr&iacute;a recabamos informaci&oacute;n desde distintas  &aacute;reas de nuestro sitio web. La informaci&oacute;n personal que el usuario ingresa  voluntariamente a nuestro sitio, la creaci&oacute;n del perfil personal, la  inscripci&oacute;n al servicio de notificaci&oacute;n de ofertas especiales a trav&eacute;s de  correo electr&oacute;nico, el registro a nuestros programas de lealtad, el env&iacute;o de  informaci&oacute;n electr&oacute;nica, as&iacute; como la informaci&oacute;n que ingresa durante su  participaci&oacute;n en los concursos&nbsp; y  encuestas que realizamos a cabo ocasionalmente, se encuentra sujeta a las  normas de confidencialidad y privacidad, que establece &nbsp;la Ley Federal de Protecci&oacute;n de Datos en  Posesi&oacute;n de los Particulares.<br />

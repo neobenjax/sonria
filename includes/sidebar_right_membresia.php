@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_membresia.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_membresia.jpg) no-repeat top right" >
     <h1 class="titulos">MEMBRES&Iacute;A</h1>
   <h2 class="titulos">Obtenla ya!</h2>
   <p>  <font color="white"> . </p>

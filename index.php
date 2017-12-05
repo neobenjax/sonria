@@ -209,8 +209,8 @@ require_once('calendar/classes/tc_calendar.php');
 
 <?php if ($sec=="home"){ ?>
     $(".slider_promociones").slideshow({
-      width      : 616,
-      height     : 572,
+      width      : '616',
+      height     : '572',
       transition : 'SlipLeft',
 	  //delay 	 : 7000
     });

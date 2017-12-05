@@ -4,12 +4,12 @@
 		<div class="sidebarLeft">
 
 			<?php if (isset($_GET["s"]) && $_GET["s"]=="unete"){ ?>
-				<p style="margin-top:200px;">
+				<p class="formar-parte">
 					<strong>Quieres formar parte del<br />
 						<span style="font-size:20px;">GRAN PROYECTO SONR&Iacute;A?</span>
 					</strong>
 				</p>
-				<h1 class="titulos" style="border-radius:5px; margin-top:0; margin-left:60px;"><a style="font-size:17px; color:#FFF; text-decoration:none; text-shadow:none; text-transform:capitalize;" href="mailto:rhumanos@sonria.com.mx">Env&iacute;anos tu curriculum</a></h1>
+				<h1 class="titulos unete" style="border-radius:5px; margin-top:0; margin-left:60px;"><a style="font-size:17px; color:#FFF; text-decoration:none; text-shadow:none; text-transform:capitalize;" href="mailto:rhumanos@sonria.com.mx">Env&iacute;anos tu curriculum</a></h1>
 				<?php }else{  ?>
 
 					<h1>

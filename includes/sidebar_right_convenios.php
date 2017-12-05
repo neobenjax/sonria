@@ -1,8 +1,8 @@
-<div class="sidebarRight">
+<div class="sidebarRight _centered-content">
 
   <h1 class="titulos">SONRISAS ALIADAS</h1>
   <h2 class="titulos">Beneficios para clientes corporativos</h2>
-  <div class="sidebar_info secciones" style="width:650px; overflow: auto; height:445px;">
+  <div class="sidebar_info secciones _aliados">
     <p>
 <!--    <div class="logos"><img src="convenios/7eleven_03.jpg" width="41" height="40" /></div> -->
 <!--    <div class="logos"><img src="convenios/adecco_03.jpg" width="77" height="42" /></div> -->

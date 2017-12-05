@@ -1,4 +1,4 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
   <h1 class="titulos">ACERCA DE SONR&Iacute;A</h1>
   <h2 class="titulos">Somos tu mejor opci&oacute;n!</h2>
   <div class="slider">
