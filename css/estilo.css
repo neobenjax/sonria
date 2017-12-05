@@ -39,7 +39,7 @@ a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usu
 /* ~~ este contenedor de anchura fija rodea a las demás divs ~~ */
 
 .back{
-	background: url(../img/back.jpg) top center;
+	background: url(../img/back.jpg) top center no-repeat;
 	min-width:1024px;
 }
 
@@ -312,6 +312,7 @@ a.logo > img {
 	margin-top:-84px;
 	text-align:justify;
 	/*background: #FF0;*/
+	height: auto;
 }
 
 .slide {
@@ -328,6 +329,12 @@ a.logo > img {
 .sidebarRight .novedad_img{
 	height:224px;
 	display:block;
+}
+
+.sidebarRight .novedad_img > img {
+    margin: 0 auto;
+    display: block;
+    max-width: 100%;
 }
 
 .sidebarRight .header_img{
@@ -408,7 +415,7 @@ a.logo > img {
 	float:left;
 	width:300px;
 	margin-top:25px;
-	max-width: 300px;
+	max-width: 650px;
 	width: 100%;
 }
 
@@ -492,6 +499,7 @@ a.logo > img {
 	width:616px;
 	overflow: auto;
 	height: 260px;
+	max-width: 616px;
 }
 
 .telefonos p{
@@ -998,6 +1006,9 @@ a.logo > img {
 	.sidebarLeft h1.titulos.unete {
 		position: relative;
 		margin-bottom:20px;
+	}
+	.sidebarRight .novedades_info{
+		height:auto;
 	}
 }
 

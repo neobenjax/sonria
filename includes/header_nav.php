@@ -88,13 +88,13 @@
   </div>
   <div class="inner-nav">
     <ul class="inner">
-      <li><a href="#">Acerca de sonría</a></li>
-      <li><a href="#">Nuestras Sucursales</a></li>
-      <li><a href="#">Novedades</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="?s=acerca">Acerca de sonría</a></li>
+      <li><a href="?s=sucursales">Nuestras Sucursales</a></li>
+      <!-- <li><a href="#">Novedades</a></li> -->
+      <li><a href="?s=contacto">Contacto</a></li>
       <li><a href="tel:55113400">55 11 34 00</a></li>
       <li class="redes-mobile">
-        <a href="#">
+        <a href="https://www.facebook.com/sonriamexico?fref=ts" target="_blank">
           <i class="fa fa-facebook-official" aria-hidden="true"></i>
         </a>
         <a href="#">

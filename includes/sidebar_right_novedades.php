@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="width:616px; height:572px;">
+<div class="sidebarRight _centered-content _novedades">
 
 <?php if ($row_novedades['novedades_titulo'] == "<img src='img/logo_invisalign.png' width='200' />"){ ?><h1 class="novedades" style="background:#fff; padding:0; padding-top:10px"><?php echo $row_novedades['novedades_titulo']; ?></h1>
 <?php }else{?>
