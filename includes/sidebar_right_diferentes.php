@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_diferentes.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_diferentes.jpg) no-repeat top right" >
 
 <h1 class="titulos">SOMOS DIFERENTES!</h1>
 <h2 class="titulos">Qu&eacute; nos hace diferentes?</h2>

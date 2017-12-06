@@ -1,7 +1,9 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
   <div class="header_img"> <img src="img/banner_sensibilidad.png" />
   </div>
-  <h1>HIPERSENSIBILIDAD</h1>
+  <div class="title-banner">
+    <h1>HIPERSENSIBILIDAD</h1>
+  </div>
   <div class="sidebar_info">
         <p><strong>¿Qu&eacute; es la hipersensibilidad?     </strong><br /></p>
     <p>La hipersensibilidad dental es la sensaci&oacute;n dolorosa que puede tenerse al ingerir alimentos, bebidas fr&iacute;as, bedidas calientes, o al aspirar aire fr&iacute;o. Se caracteriza por un dolor intenso de corta duraci&oacute;n y de manera espor&aacute;dica.</p>
@@ -10,7 +12,7 @@
     <p><strong>¿C&oacute;mo solucionar el problema de Hipersensibilidad?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas indicados para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa de la hipersensibilidad dental y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
   </div>
-  <div class="sidebar_info" style="margin-left:30px;">
+  <div class="sidebar_info _preguntas">
     <h4>Tips para prevenir la Hipersensibilidad!</h4>
     <p></p>
     <ul>

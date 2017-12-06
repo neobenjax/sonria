@@ -1,7 +1,9 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
   <div class="header_img"> <img src="img/banner_terceros_molares.png" />
   </div>
-  <h1>TERCEROS MOLARES</h1>
+  <div class="title-banner">
+    <h1>TERCEROS MOLARES</h1>
+  </div>
   <div class="sidebar_info">
         <p><strong>¿Qu&eacute; son los Terceros Molares?     </strong><br /></p>
     <p>Los Terceros Molares, son los &uacute;ltimos dientes en erupcionar, y lo hacen entre los 17 y los 25 a&ntilde;os de vida.</p>
@@ -10,7 +12,7 @@
     <p><strong>¿Pueden provocar complicaciones?     </strong><br /></p>
     <p>Los terceros molares son las piezas dentarias que con mayor frecuencia se hallan retenidas, impactadas o incluidas dentro del hueso.Existe la posibilidad de que por razones gen&eacute;ticas el tercer molar no se forme, y por lo tanto nunca erupcionar&aacute;. Si estos quedan atrapados en el hueso maxilar o en la mand&iacute;bula en forma parcial o total pueden provocar diversas complicaciones (infecciones, api&ntilde;amiento dentario, quistes, dolor, entre otros) y deber&aacute;n ser atendidos por un m&eacute;dico especialista.</p>
   </div>
-  <div class="sidebar_info" style="margin-left:30px;">
+  <div class="sidebar_info _preguntas">
     <p><strong>¿C&oacute;mo solucionar el problema de Terceros Molares?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas indicados para determinar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado para solucionar las molestias provocadas por estas piezas dentales.</p>
     <p></p>

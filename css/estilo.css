@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6, p {
 }
 a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
 	border: none;
+	/* max-width: 100%; */
 }
 /* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
 a:link {
@@ -315,6 +316,10 @@ a.logo > img {
 	height: auto;
 }
 
+.sidebarRight.unete {
+    height: 572px;
+}
+
 .slide {
     position: relative;
 }
@@ -417,8 +422,13 @@ a.logo > img {
 	margin-top:25px;
 	max-width: 650px;
 	width: 100%;
+	box-sizing: border-box;
 }
 
+.sidebarRight .sidebar_info._preguntas{
+	padding-left: 30px;
+	padding-right: 30px;
+}
 .sidebarRight .secciones{
 	margin-top:115px;
 	font-size:13px;
@@ -515,6 +525,7 @@ a.logo > img {
 	font-family: 'Oxygen', sans-serif;
 	background:#ECEBEA;
 	border:none;
+	max-width: 100%;
 }
 
 .sidebarRight .secciones #button{
@@ -905,6 +916,17 @@ a.logo > img {
 .formar-parte{
 	margin-top:200px;
 }
+.paypalimg{
+	max-width: 100%;
+}
+.clinicas-contacto{
+	width:300px; overflow: auto; height:250px;
+	max-width: :100%;
+}
+.contacto-inner{
+	margin-left:30px;
+	margin-top:30px;
+}
 @media only screen and (max-width: 1100px) {
 	body{
 		width:100%;
@@ -957,6 +979,10 @@ a.logo > img {
 		box-sizing: border-box;
 		height: auto;
 	}
+
+.sidebarRight.unete {
+    height: 572px;
+}
 
 	.cont-banner-form .sidebarRight._centered-content {
 		padding: 0 60px;
@@ -1092,6 +1118,18 @@ a.logo > img {
 	img.img-banner {
 		max-width: 100%;
 	}
+	.sidebarRight .header_img{
+		height:auto;
+	}
+	.sidebarRight .header_img img{
+		width:calc(100% + 30px);
+	}
+	.sidebarRight .title-banner h1,
+	.sidebarRight .title-banner h2{
+		float:none;
+		margin: 0;
+		position: relative;
+	}
 }
 @media only screen and (max-width: 500px) {
 	.membresia{
@@ -1117,6 +1155,13 @@ a.logo > img {
 		padding: 0 10px;
 		margin-bottom: 10px;
 	}
+	.clinicas-contacto{
+		height: auto;
+	}
+	.sidebarRight .secciones.contacto-inner{
+		margin-left:0px;
+		margin-top:10px;
+	}
 }
 @media only screen and (max-width: 400px) {
 	.sucursales{
@@ -1131,10 +1176,8 @@ a.logo > img {
 		width: 100%;
 	}
 	.movil-header .inner-nav{
-
-height: calc(100vh - 60px);
-
-top: 60px;
+		height: calc(100vh - 60px);
+		top: 60px;
 	}
 
 	.movil-header .head .menu-m {
@@ -1145,4 +1188,9 @@ top: 60px;
 		width: 80px;
 	}
 
+}
+
+
+table {
+    max-width: 100%;
 }

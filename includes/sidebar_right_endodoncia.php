@@ -1,8 +1,11 @@
-<div class="sidebarRight" >
-<div class="header_img"> <img src="img/header_tratamientos_endodoncia.jpg" />
+<div class="sidebarRight _centered-content" >
+<div class="header_img">
+  <img src="img/header_tratamientos_endodoncia.jpg" />
 </div>
-<h1>ENDODONCIA</h1>
-<h2>Agotando todas las opciones para salvar tus dientes</h2>
+<div class="title-banner">
+  <h1>ENDODONCIA</h1>
+  <h2>Agotando todas las opciones para salvar tus dientes</h2>
+</div>
 
 
 <div class="sidebar_info">
@@ -23,7 +26,7 @@
 </div>
 
   </div>
-<div class="sidebar_info" style="margin-left:30px;">
+<div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
     <p><strong>¿Mi diente va a quedar igual?</strong><br />

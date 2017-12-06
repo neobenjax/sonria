@@ -1,14 +1,17 @@
-<div class="sidebarRight" >
-  <div class="header_img"> <img src="img/banner_periodontitis.png" />
+<div class="sidebarRight _centered-content" >
+  <div class="header_img">
+    <img src="img/banner_periodontitis.png" />
   </div>
-  <h1>PERIODONTITIS</h1>
+  <div class="title-banner">
+    <h1>PERIODONTITIS</h1>
+  </div>
   <div class="sidebar_info">
         <p><strong>¿Qu&eacute; es la Periodontitis?     </strong><br /></p>
     <p>Es una enfermedad que afecta a las enc&iacute;as y a la estructura de soporte de los dientes. Las bacterias presente en la placa causa la enfermedad periodontal. Los s&iacute;ntomas de la enfermedad periodontal son similares a los de una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a>, ya que la inflamaci&oacute;n de las enc&iacute;as se presenta como etapa inicial de una periodontitis.</p>
     <p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
     <p>Las toxinas que se producen por la presencia de bacterias en la placa irritan las enc&iacute;as. Al permanecer por mucho tiempo en el mismo lugar, las toxinas provocan que las enc&iacute;as se desprendan de los dientes y se forman bolsas periodontales, las cuales se llenan de m&aacute;s toxinas y bacterias. Conforme la enfermedad avanza, las bolsas se extienden y la placa penetra m&aacute;s y m&aacute;s hasta que el hueso que sostiene al diente se destruye. Eventualmente, el diente se caer&aacute; o necesitar&aacute; ser extra&iacute;do.</p>
   </div>
-  <div class="sidebar_info" style="margin-left:30px;">
+  <div class="sidebar_info _preguntas">
     <p><strong>¿C&oacute;mo solucionar el problema de Periodontitis?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con especialistas periodontales para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa del dolor y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
     <p></p>

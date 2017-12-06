@@ -1,4 +1,4 @@
-<div class="sidebarRight _centered-content" style="background:url(img/back_unete.jpg) no-repeat top right" >
+<div class="sidebarRight _centered-content unete" style="background:url(img/back_unete.jpg) no-repeat top right" >
 
 <h1 class="titulos">&Uacute;NETE!</h1>
 <h2 class="titulos">a nuestro equipo de trabajo!</h2>

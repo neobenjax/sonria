@@ -1,8 +1,11 @@
-<div class="sidebarRight" >
-<div class="header_img"> <img src="img/header_tratamientos_odontopediatria.jpg" />
+<div class="sidebarRight _centered-content" >
+<div class="header_img">
+  <img src="img/header_tratamientos_odontopediatria.jpg" />
 </div>
-<h1>ODONTOPEDIATR&Iacute;A</h1>
-<h2>Porque tus hijos lo necesitan</h2>
+<div class="title-banner">
+  <h1>ODONTOPEDIATR&Iacute;A</h1>
+  <h2>Porque tus hijos lo necesitan</h2>
+</div>
 
 
 <div class="sidebar_info">
@@ -23,7 +26,7 @@
 </div>
 
   </div>
-<div class="sidebar_info" style="margin-left:30px;">
+<div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
     <p><strong>¿Desde que edad debo llevar a mis hijos al odontologo?</strong><br />

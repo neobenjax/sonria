@@ -1,8 +1,10 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
   <div class="header_img"> <img src="img/banner_mal_aliento.png" />
   </div>
-  <h1>HALITOSIS</h1>
-  <h2>Mal Aliento</h2>
+  <div class="title-banner">
+    <h1>HALITOSIS</h1>
+    <h2>Mal Aliento</h2>
+  </div>
   <div class="sidebar_info">
         <p><strong>¿Qu&eacute; es la Halitosis?     </strong><br /></p>
     <p>La halitosis, es definida como olor desagradable procedente del aliento de una persona. Es un problema social asociado frecuentemente a una mala higiene bucal o enfermedades de la cavidad oral.</p>
@@ -17,7 +19,7 @@
       <li>Absceso dentario o presencia de f&iacute;stulas.</li>
     <ul>
   </div>
-  <div class="sidebar_info" style="margin-left:30px;">
+  <div class="sidebar_info _preguntas">
     <p><strong>¿C&oacute;mo solucionar el problema de Halitosis?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas que identificar&aacute;n las fuentes que pueden ocasionar mal aliento, realizando el <a href="?s=consulta">diagn&oacute;stico</a> y proponiendo el <a href="?s=tratamientos">tratamiento</a> apropiado en los casos de origen bucal. Si nuestro odont&oacute;logo  determina que tienes la boca saludable y no hay muestras de mejor&iacute;a con la rutina de higiene oral, te remitir&aacute; con tu m&eacute;dico de cabecera o con un especialista para determinar otras causas posibles del mal aliento.</p>
     <p></p>

@@ -1,8 +1,10 @@
-<div class="sidebarRight" >
+<div class="sidebarRight _centered-content" >
  <div class="header_img">
    <h1></h1>
  </div>
- <a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal"></a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
+ <a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');">
+   <img src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal" class="paypalimg">
+ </a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
  <p>  <font color="white"> . </p>
  <p> </font>  </p>
  <p> <font size=2 >Por favor selecciona la membres&iacute;a que deseas adquirir y empieza a disfrutar de sus beneficios: </font></p>
@@ -11,7 +13,8 @@
    <input type="hidden" name="cmd" value="_s-xclick">
    <input type="hidden" name="hosted_button_id" value="WY8ZV9FZRRK64">
    <table>
-     <tr><td><input type="hidden" name="on0" value=".">.</td></tr><tr><td><select name="os0">
+     <tr><td><input type="hidden" name="on0" value=".">.</td></tr><tr><td>
+       <select name="os0" style="width:100%;">
      <option value="Membresia Sonria Personal con 50% de descuento">Membresia Sonria Personal con 50% de descuento</option>
      <option value="Membresia Sonria Familiar(Hasta 4 Personas) con 50% de descuento">Membresia Sonria Familiar(Hasta 4 Personas) con 50% de descuento</option>
      </select> </td></tr>

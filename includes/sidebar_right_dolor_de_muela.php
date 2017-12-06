@@ -1,7 +1,10 @@
-<div class="sidebarRight" >
-  <div class="header_img"> <img src="img/banner_dolor_de_muela.png" />
+<div class="sidebarRight _centered-content" >
+  <div class="header_img">
+    <img src="img/banner_dolor_de_muela.png" />
   </div>
-  <h1>DOLOR DE MUELA</h1>
+  <div class="title-banner">
+    <h1>DOLOR DE MUELA</h1>
+  </div>
   <div class="sidebar_info">
         <p><strong>¿Qu&eacute; es el dolor de muela?     </strong><br /></p>
     <p>Es uno de los dolores m&aacute;s comunes, intensos e incontrolables. Es de tipo irradiado ya que las terminaciones nerviosas son compartidas por las ra&iacute;ces de los dientes adyacentes y cada una de sus enervaciones.</p>
@@ -16,7 +19,7 @@
       <li>Patolog&iacute;a mandibular.</li>
     </ul>
   </div>
-  <div class="sidebar_info" style="margin-left:30px;">
+  <div class="sidebar_info _preguntas">
     <p></p>
     <p></p>
     <p></p>

@@ -1,8 +1,12 @@
-<div class="sidebarRight" >
-<div class="header_img"> <img src="img/header_tratamientos_cirugia.jpg" />
+<div class="sidebarRight _centered-content" >
+<div class="header_img">
+  <img src="img/header_tratamientos_cirugia.jpg" />
 </div>
-<h1>CIRUG&Iacute;A</h1>
-<h2>Dientes destruidos en tu boca, JAM&Aacute;S!</h2>
+
+<div class="title-banner">
+  <h1>CIRUG&Iacute;A</h1>
+  <h2>Dientes destruidos en tu boca, JAM&Aacute;S!</h2>
+</div>
 
 
 <div class="sidebar_info">
@@ -26,7 +30,7 @@
     </p>
 
   </div>
-<div class="sidebar_info" style="margin-left:30px;">
+<div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
     <p><strong>¿Puedo someterme a este tipo de procedimientos?</strong><br />

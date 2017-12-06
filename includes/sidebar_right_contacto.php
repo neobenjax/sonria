@@ -9,7 +9,7 @@
     <p>O env&iacute;anos un correo y con gusto responderemos todas tus dudas.<br />
     <span style="font-size:16px;" ><strong><a href="mailto:servicioalcliente@sonria.com.mx">servicioalcliente@sonria.com.mx</a></strong></span></p>
     <p><img src="img/una_sucursal_cerca_de_ti.jpg" width="258" height="49" /></p>
-    <div class="sidebar_info" style="width:300px; overflow: auto; height:250px;">
+    <div class="sidebar_info clinicas-contacto">
       <div class="telefonos">
         <p><strong>Cl&iacute;nica Arag&oacute;n:</strong><br />
         <a href="tel:%2B525511638329"> 11 63 83 29</a> / <a href="tel:%2B525524592727"> 24 59 27 27</a> / <a href="tel:%2B525511638245"> 11 63 82 45</a>
@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <div class="sidebar_info secciones" style="margin-left:30px; margin-top:30px; ">
+  <div class="sidebar_info secciones contacto-inner">
 
 
  <?php if (isset($_GET["rc"])){ ?>

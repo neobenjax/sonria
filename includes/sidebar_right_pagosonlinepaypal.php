@@ -2,7 +2,9 @@
   <div class="header_img">
     <h1></h1>
   </div>
-  <a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');"><img  src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal"></a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
+  <a href="#" onclick="javascript:window.open('https://www.paypal.com/mx/cgi-bin/webscr?cmd=xpt/Marketing/general/WIPaypal-outside','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=700, height=600');">
+    <img  src="img/bannerpaypal.png" border="0" alt="Pagos por PayPal" class="paypalimg">
+  </a></td></tr></table><!-- PayPal Logo  <img src="img/bannerpaypal.png" /> -->
   <p>  <font color="white"> . </p>
   <p> </font>  </p>
   <p> <font size=2 >Por favor selecciona el bot&oacute;n Comprar Ahora para realizar tu abono con total seguridad: </font></p>

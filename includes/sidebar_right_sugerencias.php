@@ -1,4 +1,4 @@
-<div class="sidebarRight" style="background:url(img/back_sugerencias.jpg)" >
+<div class="sidebarRight _centered-content" style="background:url(img/back_sugerencias.jpg) no-repeat top right" >
 
 <h1 class="titulos">SUGERENCIAS</h1>
 <h2 class="titulos">Queremos saber tu opini&oacute;n</h2>

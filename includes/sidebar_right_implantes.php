@@ -1,8 +1,11 @@
-<div class="sidebarRight" >
-<div class="header_img"> <img src="img/header_tratamientos_implantes.jpg" />
+<div class="sidebarRight _centered-content" >
+<div class="header_img">
+  <img src="img/header_tratamientos_implantes.jpg" />
 </div>
-<h1>IMPLANTES Y PR&Oacute;TESIS</h1>
-<h2>Siempre es posible volver a sonreir</h2>
+<div class="title-banner">
+  <h1>IMPLANTES Y PR&Oacute;TESIS</h1>
+  <h2>Siempre es posible volver a sonreir</h2>
+</div>
 
 
 <div class="sidebar_info">
@@ -21,7 +24,7 @@
     </ul>
 
   </div>
-<div class="sidebar_info" style="margin-left:30px;">
+<div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
     <p><strong>¿Que tipo de tratamiento existe para reemplazar uno o mas dientes?</strong><br />
