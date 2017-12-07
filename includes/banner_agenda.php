@@ -76,6 +76,11 @@
 						<?php }?>
 					</div>
 				<?php }?>
+				<?php
+				if ($sec=="home" || $sec=="novedades" || $sec=="novedades2" || $sec=="novedades3"){
+					include("/pie_home.php");
+				}
+				?>
 			</div>
 			<?php
 			if ($sec=="home"){

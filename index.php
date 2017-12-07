@@ -62,8 +62,11 @@ $totalRows_promociones = mysqli_num_rows($promociones);
 
 if ($sec=="sucursales"){
 mysqli_select_db($conn_sonria, $database_conn_sonria);
-//SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id
-$query_sucrusales_seccion = "SELECT suc.sucursal_id, suc.sucursal, imgsuc.img FROM sucursales suc, img_sucursales imgsuc WHERE suc.sucursal_id=imgsuc.img_sucursal";
+//Descomentar en producción
+//$query_sucrusales_seccion = "SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
+$query_sucrusales_seccion = "SELECT sucursal_id, ANY_VALUE(sucursal) as sucursal, ANY_VALUE(img) as img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
+
+
 $sucrusales_seccion = mysqli_query($conn_sonria, $query_sucrusales_seccion) or die(mysql_error());
 $row_sucrusales_seccion = mysqli_fetch_array($sucrusales_seccion);
 $totalRows_sucrusales_seccion = mysqli_num_rows($sucrusales_seccion);
@@ -182,7 +185,9 @@ require_once('calendar/classes/tc_calendar.php');
   <!--[if IE 6]>
   <link rel="stylesheet" type="text/css" href="js/slider/themes/carbono/jquery.slider.ie6.css" />
   <![endif]-->
-  <script type="text/javascript" src="js/slider/jquery.slider.min.js"></script>
+	<script type="text/javascript" src="js/slider/jquery.slider.min.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
+
 <?php }?>
 <script type="text/javascript">
   jQuery(document).ready(function($) {
@@ -190,30 +195,33 @@ require_once('calendar/classes/tc_calendar.php');
 //SLIDER
 
 <?php if ($sec=="home" || $sec=="acerca" || $sec=="tratamientos"){ ?>
-    $(".slider").slideshow({
-      width      : 652,
-      height     : 572,
-      transition : 'SlipLeft',
-	  //delay 	 : 7000
-    });
+		$(".slider").slick({
+			autoplay: true,
+  		autoplaySpeed: 5000,
+			infinite: true,
+		});
 <?php }?>
 
 <?php if ($sec=="novedades" || $sec=="home"){ ?>
-    $(".slider_novedades").slideshow({
-      width      : 360,
-      height     : 47,
-      transition : 'SlipLeft',
-	  delay 	 : 8000
-    });
+		$(".slider_novedades").slick({
+			autoplay: true,
+  		autoplaySpeed: 5000,
+			infinite: true,
+			arrows: false
+		});
 <?php }?>
 
 <?php if ($sec=="home"){ ?>
-    $(".slider_promociones").slideshow({
-      width      : '616',
-      height     : '572',
-      transition : 'SlipLeft',
-	  //delay 	 : 7000
-    });
+    // $(".slider_promociones").slideshow({
+    //   width      : '616',
+    //   height     : '572',
+    //   transition : 'SlipLeft',
+    // });
+		$(".slider_promociones").slick({
+			autoplay: true,
+  		autoplaySpeed: 5000,
+			infinite: true,
+		});
 <?php } ?>
 
 //PLACEHOLDER

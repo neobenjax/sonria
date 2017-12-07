@@ -7,7 +7,7 @@
   <p> </font>  </p>
   <p>  <font color="white"> . </p>
   <p> </font>  </p>
-  <div class="sidebar_info" style="width:320px; overflow: auto; height:470px;">
+  <div class="sidebar_info overflow-container-opac">
     <p>Con la Membres&iacute;a Sonr&iacute;a contar&aacute;s con*: </p>
           <ul>
       <li>10% de descuento sobre precio p&uacute;blico en nuestros tratamientos.</li>

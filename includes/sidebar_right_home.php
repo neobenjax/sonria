@@ -18,4 +18,4 @@
     <?php } while ($row_promociones = mysqli_fetch_array($promociones)); ?>
   </div>
 </div>
-<?php include("/pie_home.php"); ?>
+<?php //include("/pie_home.php"); ?>

@@ -7,7 +7,7 @@
 		<p> </font>  </p>
 		<p>  <font color="white"> . </p>
 		<p> </font>  </p>
-		<div class="sidebar_info" style="width:320px; overflow: auto; height:485px; margin-top:10px">
+		<div class="sidebar_info overflow-container-opac">
 
         		<!--<h4><a href="?s=solicitud">Haz tu solicitud aqu&iacute;</a></h4><br /> >-->
 

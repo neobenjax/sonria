@@ -9,4 +9,4 @@
   <p>      El paciente deber&aacute;  ser&nbsp; valorado por un especialista para  determinar si este tratamiento estar&iacute;a indicado en su caso.</p>
 </div></div>
 
-  <?php include("/pie_home.php"); ?>
+  <?php //include("/pie_home.php"); ?>

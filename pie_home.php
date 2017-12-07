@@ -14,18 +14,18 @@ $totalRows_novedades = mysqli_num_rows($novedades);
 <div class="pie_home1">
 
 <div class="slider_novedades">
-<?php do { ?>
-<div>
+  <?php do { ?>
+  <div>
 
-<?php if ($row_novedades['novedades_titulo'] == "<img src='img/logo_invisalign.png' width='200' />"){ ?>
-       <span ><a href="?s=novedades&id=<?php echo $row_novedades['novedades_id']; ?>"><img src='img/logo_invisalign.png' width='105' /></span><br />
-       <?php }else{  ?>
-        <span ><a href="?s=novedades&id=<?php echo $row_novedades['novedades_id']; ?>"><?php echo $row_novedades['novedades_titulo']; ?></span><br />
-       <?php }?>
+  <?php if ($row_novedades['novedades_titulo'] == "<img src='img/logo_invisalign.png' width='200' />"){ ?>
+         <span ><a href="?s=novedades&id=<?php echo $row_novedades['novedades_id']; ?>"><img src='img/logo_invisalign.png' width='105' /></span><br />
+         <?php }else{  ?>
+          <span ><a href="?s=novedades&id=<?php echo $row_novedades['novedades_id']; ?>"><?php echo $row_novedades['novedades_titulo']; ?></span><br />
+         <?php }?>
 
-        <?php echo $row_novedades['novedades_subtitulo']; ?></a>
-</div>
-<?php } while ($row_novedades = mysqli_fetch_array($novedades)); ?>
+          <?php echo $row_novedades['novedades_subtitulo']; ?></a>
+  </div>
+  <?php } while ($row_novedades = mysqli_fetch_array($novedades)); ?>
 
 </div>
 

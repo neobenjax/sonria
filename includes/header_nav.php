@@ -81,25 +81,30 @@
       </a>
     </div>
     <div class="buscador">
-      <button class="buscador">
+      <!-- <button class="buscador">
         <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
+      </button> -->
     </div>
   </div>
   <div class="inner-nav">
     <ul class="inner">
-      <li><a href="?s=acerca">Acerca de sonría</a></li>
+      <li><a href="?s=acerca">Acerca de sonr&iacute;a</a></li>
       <li><a href="?s=sucursales">Nuestras Sucursales</a></li>
-      <!-- <li><a href="#">Novedades</a></li> -->
+      <!-- <li><a href="?s=novedades">Novedades</a></li> -->
+      <!-- <li><a href="?s=tratamientos">Tratamientos</a></li> -->
       <li><a href="?s=contacto">Contacto</a></li>
-      <li><a href="tel:55113400">55 11 34 00</a></li>
+      <li>
+        <a href="tel:55113400">
+          <i class="fa fa-phone" aria-hidden="true"></i> 55 11 34 00
+        </a>
+      </li>
       <li class="redes-mobile">
         <a href="https://www.facebook.com/sonriamexico?fref=ts" target="_blank">
           <i class="fa fa-facebook-official" aria-hidden="true"></i>
         </a>
-        <a href="#">
+        <!-- <a href="#">
           <i class="fa fa-twitter-square" aria-hidden="true"></i>
-        </a>
+        </a> -->
       </li>
     </ul>
   </div>

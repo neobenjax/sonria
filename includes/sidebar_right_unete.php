@@ -4,11 +4,11 @@
 <h2 class="titulos">a nuestro equipo de trabajo!</h2>
 
 
-<div class="sidebar_info secciones" style="margin-top:">
+<div class="sidebar_info secciones">
 
   <p>La misi&oacute;n de Cl&iacute;nicas Dentales es contribuir a que M&eacute;xico Sonr&iacute;a, somos un grupo de personas emprendedoras, en donde el respeto, la honestidad, la actitud de servicio, la responsabilidad, el compromiso y la lealtad contribuyen a la excelencia de Cl&iacute;nicas Dentales Sonr&iacute;a.</p>
 </div>
-<div class="sidebar_info secciones" style="margin-left:30px; margin-top:60px;">
+<div class="sidebar_info secciones clinas-unete">
   <h4>CL&Iacute;NICAS DENTALES</h4>
   <p>Contamos con 11 Cl&iacute;nicas para ubicarte cerca de tu domicilio, contamos con horarios de tiempo completo y medio tiempo.</p>
   <h4>OFICINAS</h4>
