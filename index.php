@@ -1,4 +1,4 @@
-﻿<?php require_once('Connections/conn_sonria.php'); ?>
+<?php require_once('Connections/conn_sonria.php'); ?>
 <?php
 if (isset( $_GET['s'])){
 	$sec=$_GET['s'];
@@ -62,9 +62,9 @@ $totalRows_promociones = mysqli_num_rows($promociones);
 
 if ($sec=="sucursales"){
 mysqli_select_db($conn_sonria, $database_conn_sonria);
-//Descomentar en producción
-//$query_sucrusales_seccion = "SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
-$query_sucrusales_seccion = "SELECT sucursal_id, ANY_VALUE(sucursal) as sucursal, ANY_VALUE(img) as img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
+//SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id
+//$query_sucrusales_seccion = "SELECT suc.sucursal_id, suc.sucursal, imgsuc.img FROM sucursales suc, img_sucursales imgsuc WHERE suc.sucursal_id=imgsuc.img_sucursal";
+$query_sucrusales_seccion = "SELECT sucursal_id, sucursal, img FROM sucursales INNER JOIN img_sucursales ON sucursal_id=img_sucursal GROUP BY sucursal_id";
 
 
 $sucrusales_seccion = mysqli_query($conn_sonria, $query_sucrusales_seccion) or die(mysql_error());
@@ -174,7 +174,7 @@ require_once('calendar/classes/tc_calendar.php');
 
 <?php include('includes/metas-site.php');?>
 
-<link href="css/estilo.css" rel="stylesheet" type="text/css" />
+<link href="css/estilo.css?v=3" rel="stylesheet" type="text/css" />
 <style type="text/css">
 		.oc { display:none;}
 </style>
