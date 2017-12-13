@@ -6,9 +6,9 @@
     <h2>Mal Aliento</h2>
   </div>
   <div class="sidebar_info">
-        <p><strong>¿Qu&eacute; es la Halitosis?     </strong><br /></p>
+        <p><strong>&iquest;Qu&eacute; es la Halitosis?     </strong><br /></p>
     <p>La halitosis, es definida como olor desagradable procedente del aliento de una persona. Es un problema social asociado frecuentemente a una mala higiene bucal o enfermedades de la cavidad oral.</p>
-    <p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
+    <p><strong>&iquest;Qu&eacute; la causa?     </strong><br /></p>
     <p>El mal olor procedente de la cavidad oral se debe a la acci&oacute;n de bacterias localizadas principalmente en el dorso de la lengua y en el surco gingival. La gran extensi&oacute;n lingual y su estructura papilada hace que se retengan en ella gran cantidad de restos de comida y desechos, cuya descomposici&oacute;n por las bacterias origina el mal olor principalmente por la producci&oacute;n de compuestos de Sulfuro.</p>
     <p>Otros factores que provocan Halitosis o mal aliento pueden ser:</p>
     <ul>
@@ -20,7 +20,7 @@
     <ul>
   </div>
   <div class="sidebar_info _preguntas">
-    <p><strong>¿C&oacute;mo solucionar el problema de Halitosis?     </strong><br /></p>
+    <p><strong>&iquest;C&oacute;mo solucionar el problema de Halitosis?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas que identificar&aacute;n las fuentes que pueden ocasionar mal aliento, realizando el <a href="?s=consulta">diagn&oacute;stico</a> y proponiendo el <a href="?s=tratamientos">tratamiento</a> apropiado en los casos de origen bucal. Si nuestro odont&oacute;logo  determina que tienes la boca saludable y no hay muestras de mejor&iacute;a con la rutina de higiene oral, te remitir&aacute; con tu m&eacute;dico de cabecera o con un especialista para determinar otras causas posibles del mal aliento.</p>
     <p></p>
     <h4>Tips para prevenir el Mal Aliento!</h4>

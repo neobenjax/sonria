@@ -8,9 +8,9 @@
   </div>
 
   <div class="sidebar_info">
-    <p><strong>¿Que es la Ortodoncia?     </strong><br />
+    <p><strong>&iquest;Que es la Ortodoncia?     </strong><br />
       Es la especialidad que se encarga de colocar los dientes en posiciones ideales para buscar funcionalidad y est&eacute;tica.</p>
-    <p><strong>¿Por que es importante?</strong><br />
+    <p><strong>&iquest;Por que es importante?</strong><br />
       Es la forma de ubicar los dientes para buscar armon&iacute;a, sin necesidad de hacer procedimientos invasivos (desgaste del tejido dental).</p>
     <p> Al tener una adecuada mordida los dientes no se desgastan ni hacen fuerzas inadecuadas que los debiliten. Adem&aacute;s permite tener una buena funci&oacute;n masticatoria ayudando a tu digesti&oacute;n.      </p>
     <h4>TIPS!</h4>
@@ -25,11 +25,11 @@
   <div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
-    <p><strong>¿Para que son los retenedores?</strong><br />
+    <p><strong>&iquest;Para que son los retenedores?</strong><br />
       Es la aparatolog&iacute;a fundamental para conservar tu tratamiento de ortodoncia, del uso de ellos depende que tus dientes no vuelvan a la posici&oacute;n original y se desalinie la mordida. Inicialmente debes usarlos d&iacute;a y noche y luego solamente en la noche de acuerdo a las instrucciones de tu especialista.</p>
-    <p><strong>¿Tener Ortodoncia duele?</strong><br />
+    <p><strong>&iquest;Tener Ortodoncia duele?</strong><br />
       Todos los pacientes reaccionan de forma diferente. Al comienzo puede ser molesto y algo doloroso para algunos, pero al cabo de unos d&iacute;as te acostumbras a los aparatos.</p>
-    <p><strong>¿Cuanto tiempo dura una ortodoncia?</strong><br />
+    <p><strong>&iquest;Cuanto tiempo dura una ortodoncia?</strong><br />
       Esta depender&aacute; de la cantidad de movimientos que se deban hacer en tu boca, puede variar desde 18 hasta 24 meses o m&aacute;s dependiendo cada caso en particular.<br />
     </p>
 

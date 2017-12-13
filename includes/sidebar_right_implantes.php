@@ -11,7 +11,7 @@
 <div class="sidebar_info">
 
     <p>La Rehabilitaci&oacute;n es la especialidad que reemplaza dientes perdidos o en muy mal estado, devolvi&eacute;ndote la funci&oacute;n y la est&eacute;tica.</p>
-    <p><strong>¿Por que es importante?</strong><br />
+    <p><strong>&iquest;Por que es importante?</strong><br />
       La Rehabilitaci&oacute;n oral es importante ya que nos da diferentes opciones de tratamiento para reemplazar uno, varios o todos los dientes perdidos, adapt&aacute;ndose a todos los presupuestos. Es una especialidad que nos devuelve la sonrisa.</p>
     <p>A trav&eacute;s de esta especialidad devolveremos la funci&oacute;n masticatoria y as&iacute; evitar problemas digestivos y articulares, entre otros. </p>
     <h4>TIPS!</h4>
@@ -27,9 +27,9 @@
 <div class="sidebar_info _preguntas">
 
     <h4>PREGUNTAS FRECUENTES</h4>
-    <p><strong>¿Que tipo de tratamiento existe para reemplazar uno o mas dientes?</strong><br />
+    <p><strong>&iquest;Que tipo de tratamiento existe para reemplazar uno o mas dientes?</strong><br />
       Depende del n&uacute;mero de dientes y de su posici&oacute;n. Se pueden realizar pr&oacute;tesis fijas, removibles (quitar y poner), o implantes. Este &uacute;ltimo consiste en colocar un tornillo en el lugar que ocupa la ra&iacute;z del diente y posteriormente realizar  una corona sobre &eacute;ste.</p>
-    <p><strong>¿Cuanto es el tiempo promedio de duracion de un tratamiento de rehabilitacion finalizado?<br />
+    <p><strong>&iquest;Cuanto es el tiempo promedio de duracion de un tratamiento de rehabilitacion finalizado?<br />
     </strong>      El tiempo de duraci&oacute;n depende de factores como mordida del paciente, cuidados en la limpieza oral, asistencia a sus controles. Sin embargo el tiempo promedio es de: </p>
     <ul>
       <li>Pr&oacute;tesis fija (coronas): 5 a&ntilde;os.</li>

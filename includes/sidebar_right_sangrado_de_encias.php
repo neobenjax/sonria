@@ -5,15 +5,15 @@
     <h1>SANGRADO DE ENCIAS</h1>
   </div>
   <div class="sidebar_info">
-        <p><strong>¿Qu&eacute; es el Sangrado de Encias?     </strong><br /></p>
+        <p><strong>&iquest;Qu&eacute; es el Sangrado de Encias?     </strong><br /></p>
     <p>El sangrado de las enc&iacute;as es el principio de una alteraci&oacute;n bucal que podr&iacute;a desencadenar en una <a href="?s=gingivitis_inflamacion_encias">gingivitis</a> o <a href="?s=periodontitis">enfermedad periodontal</a>.</p>
     <p>El fen&oacute;meno de hemorragia gingival o sangrado de enc&iacute;as va acompa&ntilde;do normalmente de una inflamaci&oacute;n localizada o generalizada con un cambio de coloraci&oacute;n y un aumento de volumen.</p>
-    <p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
+    <p><strong>&iquest;Qu&eacute; la causa?     </strong><br /></p>
     <p>La causa m&aacute;s frecuente del sangrado de enc&iacute;as es la remoci&oacute;n inadecuada de la placa dental que se acumula entre la enc&iacute;a y el diente, lo cual genera una condici&oacute;n denominada <a href="?s=gingivitis_inflamacion_encias">gingivitis</a> o inflamaci&oacute;n de las enc&iacute;as.</p>
     <p>Otros factores que pueden causar sangrado de enc&iacute;as son alteraciones sist&eacute;micas como una deficiencia de vitaminas C o K, cambios hormonales, leucemia o la ingesta de medicamentos altamente irritantes.</p>
   </div>
   <div class="sidebar_info _preguntas">
-    <p><strong>¿C&oacute;mo solucionar el problema?     </strong><br /></p>
+    <p><strong>&iquest;C&oacute;mo solucionar el problema?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa de la inflamaci&oacute;n de las enc&iacute;as  y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
     <p></p>
     <h4>Tips para prevenir el Sangrado de Encias!</h4>

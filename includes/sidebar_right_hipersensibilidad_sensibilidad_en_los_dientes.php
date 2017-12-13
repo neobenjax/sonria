@@ -5,11 +5,11 @@
     <h1>HIPERSENSIBILIDAD</h1>
   </div>
   <div class="sidebar_info">
-        <p><strong>¿Qu&eacute; es la hipersensibilidad?     </strong><br /></p>
+        <p><strong>&iquest;Qu&eacute; es la hipersensibilidad?     </strong><br /></p>
     <p>La hipersensibilidad dental es la sensaci&oacute;n dolorosa que puede tenerse al ingerir alimentos, bebidas fr&iacute;as, bedidas calientes, o al aspirar aire fr&iacute;o. Se caracteriza por un dolor intenso de corta duraci&oacute;n y de manera espor&aacute;dica.</p>
-    <p><strong>¿Qu&eacute; la causa?     </strong><br /></p>
+    <p><strong>&iquest;Qu&eacute; la causa?     </strong><br /></p>
     <p>Existen diferentes motivos por los que se puede presentar una sensibilidad en los dientes sobre todo cuando las enc&iacute;as se retraen separ&aacute;ndose del &oacute;rgano dentario o cuando hay una p&eacute;rdida de enc&iacute;a que puede ser el  resultado de cepillar los dientes en&eacute;rgicamente.  Otro factor importante es el desgate que pueden tener los dientes si el paciente tiene h&aacute;bitos de rechinar los dientes durante la noche.</p>
-    <p><strong>¿C&oacute;mo solucionar el problema de Hipersensibilidad?     </strong><br /></p>
+    <p><strong>&iquest;C&oacute;mo solucionar el problema de Hipersensibilidad?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas indicados para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa de la hipersensibilidad dental y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
   </div>
   <div class="sidebar_info _preguntas">

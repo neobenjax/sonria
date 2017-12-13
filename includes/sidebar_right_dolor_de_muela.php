@@ -6,9 +6,9 @@
     <h1>DOLOR DE MUELA</h1>
   </div>
   <div class="sidebar_info">
-        <p><strong>¿Qu&eacute; es el dolor de muela?     </strong><br /></p>
+        <p><strong>&iquest;Qu&eacute; es el dolor de muela?     </strong><br /></p>
     <p>Es uno de los dolores m&aacute;s comunes, intensos e incontrolables. Es de tipo irradiado ya que las terminaciones nerviosas son compartidas por las ra&iacute;ces de los dientes adyacentes y cada una de sus enervaciones.</p>
-    <p><strong>¿Qu&eacute; lo causa?     </strong><br /></p>
+    <p><strong>&iquest;Qu&eacute; lo causa?     </strong><br /></p>
     <p>El dolor de muela se produce a causa de una estimulaci&oacute;n por agentes t&eacute;rmicos, mec&aacute;nicos o qu&iacute;micos, que afectan directamente al nervio. El cerebro percibe esto como un est&iacute;mulo doloroso, intenso y que aumenta. En general a este padecimiento se le conoce como una pulpitis, ya que es una inflamaci&oacute;n del tejido pulpar o nervioso que se encuentra en los dientes. Algunas de las causas m&aacute;s comunes por las que se puede presentar un dolor dental son:</p>
     <ul>
       <li>Fractura o fisura dental.</li>
@@ -28,7 +28,7 @@
       <li>Sinusitis.</li>
     </ul>
     <p></p>
-    <p><strong>¿C&oacute;mo solucionar el dolor dental?     </strong><br /></p>
+    <p><strong>&iquest;C&oacute;mo solucionar el dolor dental?     </strong><br /></p>
     <p>En Cl&iacute;nicas Dentales Sonr&iacute;a contamos con los especialistas indicados para realizar una <a href="?s=consulta">valoraci&oacute;n completa</a> y determinar la causa del dolor  y realizar el <a href="?s=tratamientos">tratamiento</a> m&aacute;s adecuado.</p>
     <p></p>
     <h4>Tips para prevenir el dolor dental!</h4>
