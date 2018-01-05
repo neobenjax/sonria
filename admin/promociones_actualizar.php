@@ -2,18 +2,19 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysqli_real_escape_string") ? mysqli_real_escape_string($theValue) : mysql_escape_string($theValue);
+
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -43,8 +44,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['promocion_desc'], "text"),
                        GetSQLValueString($_POST['promocion_id'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($updateSQL, $conn_sonria) or die(mysql_error());
+  // mysql_select_db($database_conn_sonria, $conn_sonria);
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+  $Result1 = mysqli_query($conn_sonria, $updateSQL) or die(mysql_error());
 
   $updateGoTo = "promociones.php?retro=2";
   if (isset($_SERVER['QUERY_STRING'])) {
@@ -58,16 +60,17 @@ $colname_promociones = "-1";
 if (isset($_GET['id'])) {
   $colname_promociones = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
+// mysql_select_db($database_conn_sonria, $conn_sonria);
 $query_promociones = sprintf("SELECT * FROM promociones WHERE promocion_id = %s", GetSQLValueString($colname_promociones, "int"));
-$promociones = mysql_query($query_promociones, $conn_sonria) or die(mysql_error());
-$row_promociones = mysql_fetch_assoc($promociones);
-$totalRows_promociones = mysql_num_rows($promociones);
+$promociones = mysqli_query($conn_sonria,$query_promociones) or die(mysql_error());
+$row_promociones = mysqli_fetch_array($promociones);
+$totalRows_promociones = mysqli_num_rows($promociones);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Sonria - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
@@ -101,7 +104,7 @@ function MM_goToURL() { //v3.0
     <p>&nbsp;</p>
       <h1>Promociones</h1>
       <form action="<?php echo $editFormAction; ?>" id="form1" name="form1" method="POST">
-        <p>Título<br />
+        <p>Tï¿½tulo<br />
           <label for="promocion_titulo"></label>
           <input name="promocion_titulo" type="text" id="promocion_titulo" value="<?php echo $row_promociones['promocion_titulo']; ?>" />
         </p>
@@ -123,5 +126,5 @@ function MM_goToURL() { //v3.0
 </body>
 </html>
 <?php
-mysql_free_result($promociones);
+mysqli_free_result($promociones);
 ?>

@@ -2,18 +2,18 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -70,11 +70,11 @@ if ((isset($_GET['id'])) && ($_GET['id'] != "")) {
   $deleteSQL = sprintf("DELETE FROM ".$tabla." WHERE ".$registro."=%s",
                        GetSQLValueString($_GET['id'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($deleteSQL, $conn_sonria) or die(mysql_error());
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+  $Result1 = mysqli_query($conn_sonria,$deleteSQL) or die(mysql_error());
 
 
-	
+
 
 
 
