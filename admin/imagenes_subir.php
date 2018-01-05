@@ -17,25 +17,25 @@ $abc="";
  }
 
  $errors=0;
-  
+
  if($_SERVER["REQUEST_METHOD"] == "POST")
  {
  	$image =$_FILES["Imagen"]["name"];
 	$uploadedfile = $_FILES['Imagen']['tmp_name'];
-     
- 
- 	if ($image) 
+
+
+ 	if ($image)
  	{
- 	
+
  		$filename = stripslashes($_FILES['Imagen']['name']);
- 	
+
   		$extension = getExtension($filename);
  		$extension = strtolower($extension);
-		
-		
- if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) 
+
+
+ if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif"))
  		{
-		
+
  			$change='<div class="msgdiv">Unknown Image extension </div> ';
  			$errors=1;
  		}
@@ -57,7 +57,7 @@ $uploadedfile = $_FILES['Imagen']['tmp_name'];
 $src = imagecreatefrompng($uploadedfile);
 
 }
-else 
+else
 {
 $src = imagecreatefromgif($uploadedfile);
 }
@@ -91,20 +91,20 @@ imagedestroy($tmp2);
 }}
 
 }
- 
+
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -133,36 +133,37 @@ if ((isset($_POST["MM_insert"])) && ($_POST["MM_insert"] == "form1")) {
                        GetSQLValueString($_FILES['Imagen']['name'], "text"),
 					   GetSQLValueString($_POST['img_sucursal'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($insertSQL, $conn_sonria) or die(mysql_error());
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+
+  $Result1 = mysqli_query($conn_sonria, $insertSQL) or die(mysql_error());
 
   $insertGoTo = "imagenes.php?retro=1&id=".$_POST['img_sucursal'];
   /*if (isset($_SERVER['QUERY_STRING'])) {
     $insertGoTo .= (strpos($insertGoTo, '?')) ? "&" : "?";
     $insertGoTo .= $_SERVER['QUERY_STRING'];
   }*/
-  
-  
+
+
 
 //If no errors registred, print the success message
- if(isset($_POST['Submit']) && !$errors) 
+ if(isset($_POST['Submit']) && !$errors)
  {
- 
+
    // mysql_query("update {$prefix}users set img='$big',img_small='$small' where user_id='$user'");
  	$change=' <div class="msgdiv">Image Uploaded Successfully!</div>';
  }
-  
-  
+
+
   header(sprintf("Location: %s", $insertGoTo));
 }
- 
 
- 
+
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <title>Nueva Era - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
 <style>
@@ -211,14 +212,14 @@ function MM_validateForm() { //v4.0
     <h1>Im&aacute;genes</h1>
     <div align="center" id="err"> <?php echo $change; ?></div>
    <div id="con">
-   
-      
-      
+
+
+
         <table width="502" cellpadding="0" cellspacing="0" id="main">
           <tbody>
             <tr>
               <td width="500" height="238" valign="top" id="main_right">
-			 
+
 			  <div class="actualizar">
 			  &nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $filename; ?>" />  &nbsp;&nbsp;&nbsp;&nbsp;<img src="<?php echo $filename1; ?>"  />
 			    <form method="POST" action="<?php echo $editFormAction; ?>" enctype="multipart/form-data" name="form1">
@@ -228,7 +229,7 @@ function MM_validateForm() { //v4.0
           <td>Imagen</td>
           <td width="350" align="left">
             <div align="left"></div></td>
-			  
+
         </tr>
 		<tr>
         <td><input size="25" name="Imagen" type="file" style="font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10pt" class="box" id='Imagen' /></td>
@@ -247,26 +248,26 @@ function MM_validateForm() { //v4.0
       </table>
 				<input type="hidden" name="MM_insert" value="form1" />
                 </form>
- 
-  
-			  
-			  
+
+
+
+
 			  </div>
-			  
-			  
-			  
-			  
+
+
+
+
 			  </td>
-            
+
             </tr>
           </tbody>
      </table>
-      
 
-      
-    
+
+
+
 </div>
-       
+
   </div>
   <!-- end .container --></div>
 </body>

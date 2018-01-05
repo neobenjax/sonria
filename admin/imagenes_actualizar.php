@@ -2,18 +2,18 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -42,8 +42,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['img_desc'], "text"),
                        GetSQLValueString($_POST['img_id'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($updateSQL, $conn_sonria) or die(mysql_error());
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+
+  $Result1 = mysqli_query($conn_sonria, $updateSQL) or die(mysql_error());
 
   $updateGoTo = "imagenes.php?retro=2&id=".$_POST['img_contenido'];
   /*if (isset($_SERVER['QUERY_STRING'])) {
@@ -57,16 +58,17 @@ $colname_imagenes = "-1";
 if (isset($_GET['id'])) {
   $colname_imagenes = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
+
 $query_imagenes = sprintf("SELECT * FROM imagenes WHERE img_id = %s", GetSQLValueString($colname_imagenes, "int"));
-$imagenes = mysql_query($query_imagenes, $conn_sonria) or die(mysql_error());
-$row_imagenes = mysql_fetch_assoc($imagenes);
-$totalRows_imagenes = mysql_num_rows($imagenes);
+$imagenes = mysqli_query($conn_sonria, $query_imagenes) or die(mysql_error());
+$row_imagenes = mysqli_fetch_array($imagenes);
+$totalRows_imagenes = mysqli_num_rows($imagenes);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Nueva Era - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
@@ -94,7 +96,7 @@ ul.nav a { zoom: 1; }  /* la propiedad de zoom da a IE el desencadenante hasLayo
       <h1>Im&aacute;genes</h1>
       <form action="<?php echo $editFormAction; ?>" id="form1" name="form1" method="POST">
     <div class="actualizar"> <img src="../img/<?php echo $row_imagenes['img_thumb']; ?>"/>
-      
+
         <table border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td>T&iacute;tulo:</td>
@@ -122,5 +124,5 @@ ul.nav a { zoom: 1; }  /* la propiedad de zoom da a IE el desencadenante hasLayo
 </body>
 </html>
 <?php
-mysql_free_result($imagenes);
+mysqli_free_result($imagenes);
 ?>

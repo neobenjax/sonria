@@ -2,18 +2,18 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -44,8 +44,8 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString($_POST['promocion_desc'], "text"),
                        GetSQLValueString($_POST['novedades_id'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($updateSQL, $conn_sonria) or die(mysql_error());
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+  $Result1 = mysqli_query($conn_sonria,$updateSQL) or die(mysql_error());
 
   $updateGoTo = "novedades.php?retro=2";
   if (isset($_SERVER['QUERY_STRING'])) {
@@ -59,16 +59,16 @@ $colname_novedades = "-1";
 if (isset($_GET['id'])) {
   $colname_novedades = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_novedades = sprintf("SELECT * FROM novedades WHERE novedades_id = %s", GetSQLValueString($colname_novedades, "int"));
-$novedades = mysql_query($query_novedades, $conn_sonria) or die(mysql_error());
-$row_novedades = mysql_fetch_assoc($novedades);
-$totalRows_novedades = mysql_num_rows($novedades);
+$novedades = mysqli_query($conn_sonria,$query_novedades) or die(mysql_error());
+$row_novedades = mysqli_fetch_array($novedades);
+$totalRows_novedades = mysqli_num_rows($novedades);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Sonria - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
@@ -102,7 +102,7 @@ function MM_goToURL() { //v3.0
     <p>&nbsp;</p>
       <h1>Novedades</h1>
       <form action="<?php echo $editFormAction; ?>" id="form1" name="form1" method="POST">
-        <p>Título<br />
+        <p>Tï¿½tulo<br />
           <label for="novedades_titulo"></label>
           <input name="novedades_titulo" type="text" id="novedades_titulo" value="<?php echo $row_novedades['novedades_titulo']; ?>" />
         </p>
@@ -127,5 +127,5 @@ function MM_goToURL() { //v3.0
 </body>
 </html>
 <?php
-mysql_free_result($novedades);
+mysqli_free_result($novedades);
 ?>

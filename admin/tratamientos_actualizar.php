@@ -2,18 +2,18 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -47,8 +47,9 @@ if ((isset($_POST["MM_update"])) && ($_POST["MM_update"] == "form1")) {
                        GetSQLValueString(isset($_POST['tratamiento_menu']) ? "true" : "", "defined","1","0"),
                        GetSQLValueString($_POST['tratamiento_id'], "int"));
 
-  mysql_select_db($database_conn_sonria, $conn_sonria);
-  $Result1 = mysql_query($updateSQL, $conn_sonria) or die(mysql_error());
+  mysqli_select_db($conn_sonria, $database_conn_sonria);
+
+  $Result1 = mysqli_query($conn_sonria, $updateSQL) or die(mysql_error());
 
   $updateGoTo = "tratamientos.php?retro=2";
   if (isset($_SERVER['QUERY_STRING'])) {
@@ -62,16 +63,17 @@ $colname_tratamientos = "-1";
 if (isset($_GET['id'])) {
   $colname_tratamientos = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
+
 $query_tratamientos = sprintf("SELECT * FROM tratamientos WHERE tratamiento_id = %s", GetSQLValueString($colname_tratamientos, "int"));
-$tratamientos = mysql_query($query_tratamientos, $conn_sonria) or die(mysql_error());
-$row_tratamientos = mysql_fetch_assoc($tratamientos);
-$totalRows_tratamientos = mysql_num_rows($tratamientos);
+$tratamientos = mysqli_query($conn_sonria, $query_tratamientos) or die(mysql_error());
+$row_tratamientos = mysqli_fetch_array($tratamientos);
+$totalRows_tratamientos = mysqli_num_rows($tratamientos);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Sonria - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
@@ -141,5 +143,5 @@ Seleccionar para colocar el tratamiento en la barra de men&uacute; inferior</p>
 </body>
 </html>
 <?php
-mysql_free_result($tratamientos);
+mysqli_free_result($tratamientos);
 ?>

@@ -2,18 +2,18 @@
 <?php include("restringir.php")?>
 <?php
 if (!function_exists("GetSQLValueString")) {
-function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "") 
+function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDefinedValue = "")
 {
   if (PHP_VERSION < 6) {
     $theValue = get_magic_quotes_gpc() ? stripslashes($theValue) : $theValue;
   }
 
-  $theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
+  //$theValue = function_exists("mysql_real_escape_string") ? mysql_real_escape_string($theValue) : mysql_escape_string($theValue);
 
   switch ($theType) {
     case "text":
       $theValue = ($theValue != "") ? "'" . $theValue . "'" : "NULL";
-      break;    
+      break;
     case "long":
     case "int":
       $theValue = ($theValue != "") ? intval($theValue) : "NULL";
@@ -36,16 +36,16 @@ $colname_imagenes = "-1";
 if (isset($_GET['id'])) {
   $colname_imagenes = $_GET['id'];
 }
-mysql_select_db($database_conn_sonria, $conn_sonria);
+mysqli_select_db($conn_sonria, $database_conn_sonria);
 $query_imagenes = sprintf("SELECT * FROM img_sucursales WHERE img_id = %s", GetSQLValueString($colname_imagenes, "int"));
-$imagenes = mysql_query($query_imagenes, $conn_sonria) or die(mysql_error());
-$row_imagenes = mysql_fetch_assoc($imagenes);
-$totalRows_imagenes = mysql_num_rows($imagenes);
+$imagenes = mysqli_query($conn_sonria,$query_imagenes) or die(mysql_error());
+$row_imagenes = mysqli_fetch_array($imagenes);
+$totalRows_imagenes = mysqli_num_rows($imagenes);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Nueva Era - Admin</title>
 <link href="css/twoColLiqLt.css" rel="stylesheet" type="text/css" /><!--[if lte IE 7]>
@@ -71,8 +71,8 @@ ul.nav a { zoom: 1; }  /* la propiedad de zoom da a IE el desencadenante hasLayo
   <?php include("menu.php")?>
     <div class="content">
       <h1>Im&aacute;genes de Sucursal</h1>
-      
-    <div class="actualizar"> 
+
+    <div class="actualizar">
       <img src="../sucursales/<?php echo $row_imagenes['img']; ?>" width="280" />&iquest;Est&aacute;s seguro que quieres eliminar esta imagen<strong></strong>?
       <div class="barra_inf">
       <a href="javascript: history.go(-1)">No</a> | <a href="eliminar_confirm.php?t=4&amp;id=<?php echo $row_imagenes['img_id']; ?>&img=<?php echo $row_imagenes['img']; ?>&seccion=<?php echo $row_imagenes['img_sucursal']; ?>">Si</a></div>
@@ -82,5 +82,5 @@ ul.nav a { zoom: 1; }  /* la propiedad de zoom da a IE el desencadenante hasLayo
 </body>
 </html>
 <?php
-mysql_free_result($imagenes);
+mysqli_free_result($imagenes);
 ?>
